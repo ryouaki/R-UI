@@ -1,8 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import Button from './components/button';
+
+import './styles/index.css';
+
+ReactDOM.render(
+  <div className="kr-react-ui">
+    <Button></Button>
+  </div>, 
+  document.getElementById('root')
+);
 registerServiceWorker();
