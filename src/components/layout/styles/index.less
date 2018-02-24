@@ -1,0 +1,30 @@
+.r-ui {
+  .row {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+
+    &.right {
+      justify-content: flex-end;
+    }
+    &.left {
+      justify-content: flex-start;
+    }
+    &.center {
+      justify-content: center;
+    }
+    &.between {
+      justify-content: space-between;
+    }
+    &.around {
+      justify-content: space-around;
+    }
+
+    .col {
+      &.fixed {
+        flex-grow: 0;
+        flex-shrink: 0;
+      }
+    }
+  }
+}

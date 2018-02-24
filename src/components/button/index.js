@@ -1,5 +1,5 @@
 import React from 'react';
-import './index.css';
+import './styles/index.css';
 
 export default class Button extends React.PureComponent {
   render() {
