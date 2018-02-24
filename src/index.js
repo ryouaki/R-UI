@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {
+  BrowserRouter as Router
+} from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 
-import Button from './components/button';
-
-import './styles/index.css';
+import Containers from './containers';
 
 ReactDOM.render(
-  <div className="kr-react-ui">
-    <Button></Button>
-  </div>, 
+  <Router>
+    <Containers />
+  </Router>, 
   document.getElementById('root')
 );
 registerServiceWorker();
