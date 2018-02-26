@@ -22,3 +22,15 @@
   flex-grow: 0;
   flex-shrink: 0;
 }
+.r-ui .row .col.grow-only {
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+.r-ui .row .col.grow-and-shrink {
+  flex-grow: 1;
+  flex-shrink: 1;
+}
+.r-ui .row .col.shrink-only {
+  flex-grow: 0;
+  flex-shrink: 1;
+}

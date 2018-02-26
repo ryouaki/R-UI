@@ -21,9 +21,21 @@
     }
 
     .col {
-      &.fixed {
+      &.fixed { // 不变大，也不变小
         flex-grow: 0;
         flex-shrink: 0;
+      }
+      &.grow-only { // 变大，不变小
+        flex-grow: 1;
+        flex-shrink: 0;
+      }
+      &.grow-and-shrink { // 变大，也变小
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
+      &.shrink-only { // 不变大，只变小
+        flex-grow: 0;
+        flex-shrink: 1;
       }
     }
   }
