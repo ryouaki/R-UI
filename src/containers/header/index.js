@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from './../../components/layout';
+import Layout from './../../components/Layout';
 
 import './../../styles/header/index.css';
 import GithubIcon from './../../assets/icon/github.svg';
@@ -16,12 +16,12 @@ export default class Header extends React.PureComponent {
         <Layout.Row align="right" className="navigate">
           <Layout.Col>
             <div className="item active">
-              首页
+              概要
             </div>
           </Layout.Col>
           <Layout.Col>
             <div className="item">
-              组件
+              教程
             </div>
           </Layout.Col>
           <Layout.Col>
@@ -29,7 +29,7 @@ export default class Header extends React.PureComponent {
               关于
             </div>
           </Layout.Col>
-          <Layout.Col flex="fixed" width={100}>
+          <Layout.Col flex="fixed" width={56}>
             <a href="https://github.com/ryouaki/R-UI">
               <img src={GithubIcon} alt="Github Icon" className="github-icon"/>
             </a>

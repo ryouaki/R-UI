@@ -6,6 +6,7 @@ import {
 import registerServiceWorker from './registerServiceWorker';
 
 import Containers from './containers';
+import 'github-markdown-css/github-markdown.css';
 
 ReactDOM.render(
   <Router>
