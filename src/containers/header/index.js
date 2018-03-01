@@ -1,11 +1,19 @@
 import React from 'react';
 import Layout from './../../components/Layout';
-
+import {
+  NavLink
+} from 'react-router-dom';
+import { connect } from 'react-redux';
 import './../../styles/header/index.css';
 import GithubIcon from './../../assets/icon/github.svg';
 
-export default class Header extends React.PureComponent {
+class Header extends React.PureComponent {
   render() {
+
+    let {
+      path
+    } = this.props;
+
     return <Layout.Row align="left" className="r-ui-header">
       <Layout.Col flex="fixed" width={250}>
         <div className="logo" version="Ver: 1.0.0" library="React: 16.3.0-alpha.1">
@@ -15,18 +23,34 @@ export default class Header extends React.PureComponent {
       <Layout.Col flex="growAndShrink">
         <Layout.Row align="right" className="navigate">
           <Layout.Col>
-            <div className="item active">
-              概要
+            <div className="item">
+              <NavLink
+                to="/"
+                activeClassName="active"
+                isActive={path === '/'}
+              >
+                概要
+              </NavLink>
             </div>
           </Layout.Col>
           <Layout.Col>
             <div className="item">
-              教程
+              <NavLink
+                to="/main"
+                activeClassName="active"
+              >
+                文档
+              </NavLink>
             </div>
           </Layout.Col>
           <Layout.Col>
             <div className="item">
-              关于
+              <NavLink
+                to="/about"
+                activeClassName="active"
+              >
+                关于
+              </NavLink>
             </div>
           </Layout.Col>
           <Layout.Col flex="fixed" width={56}>
@@ -39,3 +63,12 @@ export default class Header extends React.PureComponent {
     </Layout.Row>
   }
 }
+
+export default connect((store) => {
+  console.log(store);
+  return {
+    path: store.route.location && store.route.location.path || ''
+  }
+}, {
+
+})(Header);

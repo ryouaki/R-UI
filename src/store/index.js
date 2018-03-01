@@ -2,25 +2,27 @@ import {
   createStore,
   applyMiddleware
 } from 'redux';
-
+import createHistory from 'history/createBrowserHistory';
+import { routerMiddleware } from 'react-router-redux';
 import ReduxThunk from 'redux-thunk';
 import initReducer from '../reducers';
 
-let middleware = [ReduxThunk];
+const history = createHistory();
+const reducers = initReducer();
+const middleware = [ReduxThunk, routerMiddleware(history)];
 
-let reducers = initReducer();
-
-let rootReducer = (state, action) => {
+const rootReducer = (state, action) => {
   console.log(`action ${action.type}`);
   return reducers(state, action);
 }
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
-
 export default () => {
-  let store = createStoreWithMiddleware(
+  let store = createStore(
     rootReducer,
     applyMiddleware(...middleware)
   )
-  return store;
+  return {
+    store,
+    history
+  };
 }

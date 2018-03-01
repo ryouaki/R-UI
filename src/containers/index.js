@@ -6,13 +6,15 @@ import {
 import Bundle from './../components/Bundle';
 import { getPublicUrl } from './../common';
 
+import Header from './Header';
 import Footer from './Footer';
 
 import './../styles/index.css';
 
-export default class Container extends React.PureComponent {
+export default class Container extends React.Component {
   render() {
     return <div className="r-ui container">
+      <Header/>
       <Switch>
         <Route exact path={ getPublicUrl('/') } component={ (props) => {
               return <Bundle load={ () => import('./Home') }>
