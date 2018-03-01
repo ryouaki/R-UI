@@ -1,6 +1,6 @@
 .r-ui-home {
-  margin: 36px;
-  border: 1px solid #e1e4e8;
+  margin: 0px auto 36px;
   padding: 32px;
   border-radius: 3px;
+  width: 80%;
 }
