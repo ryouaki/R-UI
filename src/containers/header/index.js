@@ -3,19 +3,25 @@ import Layout from './../../components/Layout';
 import {
   NavLink
 } from 'react-router-dom';
-import { connect } from 'react-redux';
 import './../../styles/header/index.css';
 import GithubIcon from './../../assets/icon/github.svg';
 
-class Header extends React.PureComponent {
+export default class Header extends React.Component {
+
+  isActive(current) {
+    return (match, location) => {
+      if (location.pathname === current) {
+        return true;
+      } else {
+        return false;
+      }
+    };
+  }
+
   render() {
 
-    let {
-      path
-    } = this.props;
-
     return <Layout.Row align="left" className="r-ui-header">
-      <Layout.Col flex="fixed" width={250}>
+      <Layout.Col flex="fixed" width={260}>
         <div className="logo" version="Ver: 1.0.0" library="React: 16.3.0-alpha.1">
           R-UI
         </div>
@@ -27,7 +33,7 @@ class Header extends React.PureComponent {
               <NavLink
                 to="/"
                 activeClassName="active"
-                isActive={path === '/'}
+                isActive={ this.isActive('/') }
               >
                 概要
               </NavLink>
@@ -38,6 +44,7 @@ class Header extends React.PureComponent {
               <NavLink
                 to="/main"
                 activeClassName="active"
+                isActive={ this.isActive('/main') }
               >
                 文档
               </NavLink>
@@ -48,6 +55,7 @@ class Header extends React.PureComponent {
               <NavLink
                 to="/about"
                 activeClassName="active"
+                isActive={ this.isActive('/about') }
               >
                 关于
               </NavLink>
@@ -63,12 +71,3 @@ class Header extends React.PureComponent {
     </Layout.Row>
   }
 }
-
-export default connect((store) => {
-  console.log(store);
-  return {
-    path: store.route.location && store.route.location.path || ''
-  }
-}, {
-
-})(Header);
