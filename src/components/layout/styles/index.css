@@ -18,6 +18,12 @@
 .r-ui .row.around {
   justify-content: space-around;
 }
+.r-ui .row.direction-row {
+  flex-direction: row;
+}
+.r-ui .row.direction-col {
+  flex-direction: column;
+}
 .r-ui .row .col.fixed {
   flex-grow: 0;
   flex-shrink: 0;

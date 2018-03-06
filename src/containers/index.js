@@ -13,9 +13,8 @@ import './../styles/index.css';
 
 export default class Container extends React.Component {
   render() {
-    return <div className="r-ui container">
-      <Header/>
-      <Switch>
+    return [<Header key="header"/>,
+      <Switch key="main">
         <Route exact path={ getPublicUrl('/') } component={ (props) => {
               return <Bundle load={ () => import('./Home') }>
                 {Home => <Home {...props} />}
@@ -28,8 +27,7 @@ export default class Container extends React.Component {
               </Bundle>
             } 
           }/>
-      </Switch>
-      <Footer/>
-    </div>
+      </Switch>,
+      <Footer key="footer"/>]
   }
 }

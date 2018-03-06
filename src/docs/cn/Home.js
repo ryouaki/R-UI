@@ -22,7 +22,8 @@ export default `
 
 - 文档并不是开发指导，且难于理解。虽然 React16 出来文档改版以后比之前好了许多。但是这真的不是一个 "用户使用说明书"，而像是前端哲学 Blog
 - React 的设计太激进了。颠覆了传统前端开发的很多模式，其中需要理解大量的设计模式
-- 在大型，复杂前端项目中，需要理解复杂的 Flux 架构
+- 在大型，复杂前端项目中，需要理解复杂的 Flux 架构，但是这个思想却与传统前端模式区别很大
+- React 需要使用很多外部包，这些包都会带来新的概念，确实是一个很麻烦的事情
 - 一群乱七八糟的状态(state, props)会令人苦恼
 - 很多人不太习惯 JSX，但是我真的搞不懂他和他们喜欢的 Vue 或者 Angular 模版有什么区别
 - React 的思想太激进了，需要具备一定的业务抽象能力(状态)，否则会非常苦恼。但是对于国内的大多数前端技术人员是没有这方面经验的
@@ -34,9 +35,37 @@ _**Note**_: _*其实真的不必纠结那么多前端框架哪个好，哪个不
 
 ## 本站的主要内容
 
-- 认识 React
-- 从 create-react-app 开始
-- React 的基本语法
-- Thinking in React(重要)
-- Flux(重要)
+- 开始
+  - 认识 React
+  - 从 create-react-app 开始
+  - React 的基本语法
+  - Thinking in React
+  - Flux
+- 基础组件
+  - Layout(布局)
+  - Button(按钮)
+  - Icon(图标)
+- 表单组件
+  - Form(表单)
+  - Input(文本框)
+  - Radio(单选框)
+  - Checkbox(多选框)
+  - Number(数字框)
+  - Select(下拉框)
+  - Switch(开关)
+  - DateTimePicker(日期选择)
+  - Updater(上传)
+- 数据组件
+  - Table(表格组件)
+  - Pagination(分页组件)
+  - Tree(树状组件)
+- 通知组件
+  - Alert(提示)
+  - Loading(加载)
+  - Message(消息)
+- 其它组件
+  - Dialog(对话框)
+  - Tooltip(文字提示)
+  - Tabs(标签)
+  - Dropdown(下拉菜单)
 `

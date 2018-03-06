@@ -7,19 +7,22 @@ export default class Row extends React.PureComponent {
 
   static propTypes = {
     align: PropTypes.oneOf(['left', 'right', 'center', 'between', 'around']),
-    className: PropTypes.string
+    className: PropTypes.string,
+    direction: PropTypes.oneOf(['row', 'col'])
   }
 
   static defaultProps = {
     align: 'left',
-    chassName: ''
+    chassName: '',
+    direction: 'row'
   }
 
   render() {
     let {
       align,
       children,
-      className
+      className,
+      direction
     } = this.props;
 
     if (React.Children.count(children) <= 0) {
@@ -32,7 +35,7 @@ export default class Row extends React.PureComponent {
       }
     })
 
-    return <div className={ classnames('row', align, className) }>
+    return <div className={ classnames('row', 'direction-' + direction, align, className) }>
         { children }
       </div>
   }
