@@ -19,9 +19,8 @@ export default class Header extends React.Component {
   }
 
   render() {
-
     return <Layout.Row align="left" className="r-ui-header">
-      <Layout.Col flex="fixed" width={260}>
+      <Layout.Col flex="fixed">
         <div className="logo" version="Ver: 1.0.0" library="React: 16.3.0-alpha.1">
           R-UI
         </div>

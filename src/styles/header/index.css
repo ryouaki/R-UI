@@ -1,6 +1,8 @@
 .r-ui-header {
   border-bottom: 1px solid #e1e4e8;
   box-sizing: border-box;
+  height: 55px;
+  line-height: 56px;
 }
 .r-ui-header a:link,
 .r-ui-header a:visited,
@@ -9,13 +11,12 @@
   color: #0366d6;
 }
 .r-ui-header .logo {
-  height: 55px;
-  line-height: 56px;
   font-size: 32px;
   font-weight: 900;
   padding-left: 16px;
   color: #6f42c1;
   position: relative;
+  width: 260px;
 }
 .r-ui-header .logo:after {
   content: attr(library);
@@ -33,10 +34,6 @@
   left: 98px;
   top: -7px;
   font-weight: 900;
-}
-.r-ui-header .navigate {
-  height: 55px;
-  line-height: 56px;
 }
 .r-ui-header .navigate .item {
   height: 48px;
