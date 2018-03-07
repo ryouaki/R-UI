@@ -8,7 +8,8 @@
     "start": "react-scripts start&npm run watch:less",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "analyzer": "node ./scripts/build.prod.analyzer.js"
   },
   "devDependencies": {
     "classnames": "^2.2.5",
@@ -24,8 +25,22 @@
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.9",
-    "react-scripts": "^1.1.1",
+    "react-scripts": "^2.0.0-next.47d2d941",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "webpack-bundle-analyzer": "^2.11.1"
+  },
+  "browserslist": {
+    "development": [
+      "last 2 chrome versions",
+      "last 2 firefox versions",
+      "last 2 edge versions"
+    ],
+    "production": [
+      ">1%",
+      "last 4 versions",
+      "Firefox ESR",
+      "not ie < 11"
+    ]
   }
 }

@@ -1,43 +1,45 @@
 import React from 'react';
+import {
+  NavLink
+} from 'react-router-dom';
 
 import Layout from './../../../components/Layout';
 
 export default class Menu extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      menus: null
+    };
+  }
+
+  componentDidMount() {
+    const {
+      items = {},
+      routes = []
+    } = this.props;
+
+    this.routesMapMenus(routes, items);
+  }
+
+  routesMapMenus(routes, items) {
+    // 虚拟从后台拉取路由设置
+    new Promise(() => {
+      this.setState({
+        menus: this.makeMenu(routes, items)
+      });
+    });
+  }
+
+  makeMenu(routes, items) {
+    return routes.map( (route) => {
+      return null;
+    });
+  }
+
   render() {
-    return <Layout.Row direction="col">
-      <Layout.Col flex="growAndShrink">
-        11
-      </Layout.Col>
-      <Layout.Col flex="fixed">
-        11<br/>
-        11<br/>
-        11<br/>
-        11<br/>
-        11<br/>
-        11<br/>
-        11<br/>
-        11<br/>
-        11<br/>
-        11<br/>
-        11<br/>
-        11<br/>
-        11<br/>
-        11<br/>
-        11<br/>
-        11<br/>
-        11<br/>
-        11<br/>
-        11<br/>
-        11<br/>
-        11<br/>
-        11<br/>
-        11<br/>
-        11<br/>
-        11<br/>
-        11<br/>
-        11<br/>
-        11<br/>
-      </Layout.Col>
-    </Layout.Row>
+    return this.state.menus;
   }
 }

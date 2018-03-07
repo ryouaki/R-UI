@@ -35,8 +35,10 @@
   top: -7px;
   font-weight: 900;
 }
+.r-ui-header .navigate {
+  height: 55px;
+}
 .r-ui-header .navigate .item {
-  height: 48px;
   font-size: 16px;
   color: #0366d6;
   cursor: pointer;

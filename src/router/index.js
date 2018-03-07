@@ -5,23 +5,23 @@ export default [
     children: [
       {
         path: '/main/start/react',
-        component: '',
+        component: null,
       },
       {
         path: '/main/start/create',
-        component: '',
+        component: null,
       },
       {
         path: '/main/start/base',
-        component: '',
+        component: null,
       },
       {
         path: '/main/start/think',
-        component: '',
+        component: null,
       },
       {
         path: '/main/start/flux',
-        component: '',
+        component: null,
       }
     ]
   },
