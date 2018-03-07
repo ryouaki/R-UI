@@ -1,0 +1,24 @@
+.r-ui-main .r-ui-menu {
+  padding: 10px 16px;
+  color: #24292e;
+  font-weight: 600;
+}
+.r-ui-main .r-ui-menu-item {
+  padding: 6px 12px;
+  color: #586069;
+  cursor: pointer;
+  border-left: 4px solid transparent;
+  font-size: 14px;
+  white-space: nowrap;
+  user-select: none;
+}
+.r-ui-main .r-ui-menu-item:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #e36209;
+  box-sizing: border-box;
+}
+.r-ui-main .menu-item-active .r-ui-menu-item {
+  color: #6f42c1;
+  border-left-color: #6f42c1;
+  font-weight: 600;
+}

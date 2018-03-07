@@ -25,4 +25,122 @@ export default [
       }
     ]
   },
+  {
+    path: '/main/base',
+    component: null,
+    children: [
+      {
+        path: '/main/base/layout',
+        component: null,
+      },
+      {
+        path: '/main/base/button',
+        component: null,
+      },
+      {
+        path: '/main/base/icon',
+        component: null,
+      }
+    ]
+  },
+  {
+    path: '/main/form',
+    component: null,
+    children: [
+      {
+        path: '/main/form/form',
+        component: null,
+      },
+      {
+        path: '/main/form/input',
+        component: null,
+      },
+      {
+        path: '/main/form/radio',
+        component: null,
+      },
+      {
+        path: '/main/form/checkbox',
+        component: null,
+      },
+      {
+        path: '/main/form/number',
+        component: null,
+      },
+      {
+        path: '/main/form/select',
+        component: null,
+      },
+      {
+        path: '/main/form/switch',
+        component: null,
+      },
+      {
+        path: '/main/form/datetimepicker',
+        component: null,
+      },
+      {
+        path: '/main/form/updater',
+        component: null,
+      }
+    ]
+  },
+  {
+    path: '/main/data',
+    component: null,
+    children: [
+      {
+        path: '/main/data/table',
+        component: null,
+      },
+      {
+        path: '/main/data/pagination',
+        component: null,
+      },
+      {
+        path: '/main/data/tree',
+        component: null,
+      }
+    ]
+  },
+  {
+    path: '/main/notice',
+    component: null,
+    children: [
+      {
+        path: '/main/notice/alert',
+        component: null,
+      },
+      {
+        path: '/main/notice/loading',
+        component: null,
+      },
+      {
+        path: '/main/notice/message',
+        component: null,
+      }
+    ]
+  },
+  {
+    path: '/main/others',
+    component: null,
+    children: [
+      {
+        path: '/main/others/dialog',
+        component: null,
+      },
+      {
+        path: '/main/others/tooltip',
+        component: null,
+      },
+      {
+        path: '/main/others/tabs',
+        component: null,
+      },
+      {
+        path: '/main/others/dropdown',
+        component: null,
+      }
+    ]
+  },
 ]

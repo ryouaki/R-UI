@@ -10,6 +10,8 @@ import Menu from './fragments/Menu';
 import Docs from './../../docs/cn/Menu';
 import Routes from './../../router';
 
+import './../../styles/main/index.css';
+
 export default class Main extends React.PureComponent {
 
   render() {

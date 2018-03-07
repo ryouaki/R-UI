@@ -6,6 +6,9 @@ body,
   font-family: 'PingFang SC', 'Lantinghei SC', 'Helvetica Neue', 'Helvetica', 'Arial', 'Microsoft YaHei', 'STHeitiSC-Light', 'simsun', 'WenQuanYi Zen Hei', 'WenQuanYi Micro Hei', 'sans-serif';
   height: 100%;
 }
+* {
+  outline: none;
+}
 a {
   text-decoration: none;
 }

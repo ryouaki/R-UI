@@ -3,20 +3,12 @@ import Layout from './../../components/Layout';
 import {
   NavLink
 } from 'react-router-dom';
+
 import './../../styles/header/index.css';
 import GithubIcon from './../../assets/icon/github.svg';
+import { isActive } from './../../common';
 
 export default class Header extends React.Component {
-
-  isActive(current) {
-    return (match, location) => {
-      if (location.pathname === current) {
-        return true;
-      } else {
-        return false;
-      }
-    };
-  }
 
   render() {
     return <Layout.Row align="left" className="r-ui-header">
@@ -32,7 +24,7 @@ export default class Header extends React.Component {
               <NavLink
                 to="/"
                 activeClassName="active"
-                isActive={ this.isActive('/') }
+                isActive={ isActive('/') }
               >
                 概要
               </NavLink>
@@ -43,7 +35,7 @@ export default class Header extends React.Component {
               <NavLink
                 to="/main"
                 activeClassName="active"
-                isActive={ this.isActive('/main') }
+                isActive={ isActive('/main') }
               >
                 文档
               </NavLink>
@@ -54,7 +46,7 @@ export default class Header extends React.Component {
               <NavLink
                 to="/about"
                 activeClassName="active"
-                isActive={ this.isActive('/about') }
+                isActive={ isActive('/about') }
               >
                 关于
               </NavLink>

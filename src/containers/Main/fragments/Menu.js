@@ -4,6 +4,7 @@ import {
 } from 'react-router-dom';
 
 import Layout from './../../../components/Layout';
+import { isActive } from './../../../common';
 
 export default class Menu extends React.Component {
 
@@ -35,7 +36,24 @@ export default class Menu extends React.Component {
 
   makeMenu(routes, items) {
     return routes.map( (route) => {
-      return null;
+      return <ul key={ route.path }>
+        <li className="r-ui-menu" key={route.path+"-root"}>
+          { items[route.path] }
+        </li>
+        {
+          route.children && route.children.map( (child) => {
+            return <NavLink
+                to={ child.path }
+                activeClassName="menu-item-active"
+                isActive={ isActive(child.path) }
+                key={ child.path } >
+                <li className="r-ui-menu-item">
+                  - { items[child.path] }
+                </li>
+              </NavLink>
+          })
+        }
+      </ul>;
     });
   }
 
