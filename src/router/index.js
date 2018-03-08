@@ -1,3 +1,7 @@
+import React from 'react';
+
+import Bundle from './../components/Bundle';
+
 export default [
   {
     path: '/main/start',
@@ -5,11 +9,19 @@ export default [
     children: [
       {
         path: '/main/start/react',
-        component: null,
+        component: (props) => {
+              return <Bundle load={ () => import('./../containers/MainReact') }>
+                { Component => <Component {...props} /> }
+              </Bundle>
+            },
       },
       {
         path: '/main/start/create',
-        component: null,
+        component: (props) => {
+          return <Bundle load={ () => import('./../containers/MainCreate') }>
+            { Component => <Component {...props} /> }
+          </Bundle>
+        },
       },
       {
         path: '/main/start/base',

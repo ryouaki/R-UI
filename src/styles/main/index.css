@@ -3,6 +3,7 @@
 }
 .r-ui-main .r-ui-menu {
   border-right: 1px solid #e1e4e8;
+  width: 220px;
 }
 .r-ui-main .r-ui-menu-root {
   padding: 10px 16px;
