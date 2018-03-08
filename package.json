@@ -9,7 +9,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "analyzer": "node ./scripts/build.prod.analyzer.js"
+    "analyzer": "node ./scripts/build.prod.analyzer.js",
+    "stats": "BABEL_ENV='production' NODE_ENV='production' webpack --config ./node_modules/react-scripts/config/webpack.config.prod.js --profile --json > "
   },
   "devDependencies": {
     "classnames": "^2.2.5",

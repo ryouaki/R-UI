@@ -1,4 +1,10 @@
+.r-ui-main {
+  margin: 24px 0px;
+}
 .r-ui-main .r-ui-menu {
+  border-right: 1px solid #e1e4e8;
+}
+.r-ui-main .r-ui-menu-root {
   padding: 10px 16px;
   color: #24292e;
   font-weight: 600;

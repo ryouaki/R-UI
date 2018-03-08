@@ -23,13 +23,13 @@ export default class Container extends React.Component {
         <Switch key="main">
           <Route exact path={ getPublicUrl('/') } component={ (props) => {
                 return <Bundle load={ () => import('./Home') }>
-                  {Home => <Home {...props} />}
+                  { Home => <Home {...props} /> }
                 </Bundle>
               } 
             }/>
           <Route path={ getPublicUrl('/main') } component={ (props) => {
                 return <Bundle load={ () => import('./Main') }>
-                  {Articles => <Articles {...props} />}
+                  { Articles => <Articles {...props} /> }
                 </Bundle>
               } 
             }/>

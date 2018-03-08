@@ -3,7 +3,6 @@ import {
   NavLink
 } from 'react-router-dom';
 
-import Layout from './../../../components/Layout';
 import { isActive } from './../../../common';
 
 export default class Menu extends React.Component {
@@ -37,7 +36,7 @@ export default class Menu extends React.Component {
   makeMenu(routes, items) {
     return routes.map( (route) => {
       return <ul key={ route.path }>
-        <li className="r-ui-menu" key={route.path+"-root"}>
+        <li className="r-ui-menu-root" key={route.path+"-root"}>
           { items[route.path] }
         </li>
         {
