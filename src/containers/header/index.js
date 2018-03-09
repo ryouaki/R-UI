@@ -24,7 +24,7 @@ export default class Header extends React.Component {
               <NavLink
                 to="/"
                 activeClassName="active"
-                isActive={ isActive('/') }
+                isActive={ isActive('/', true) }
               >
                 概要
               </NavLink>
@@ -33,7 +33,7 @@ export default class Header extends React.Component {
           <Layout.Col>
             <div className="item">
               <NavLink
-                to="/main"
+                to="/main/start/react"
                 activeClassName="active"
                 isActive={ isActive('/main') }
               >
@@ -46,7 +46,7 @@ export default class Header extends React.Component {
               <NavLink
                 to="/about"
                 activeClassName="active"
-                isActive={ isActive('/about') }
+                isActive={ isActive('/about', true) }
               >
                 关于
               </NavLink>

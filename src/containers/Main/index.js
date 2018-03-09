@@ -6,6 +6,7 @@ import {
 
 import Layout from './../../components/Layout';
 import Menu from './fragments/Menu';
+import Article from './fragments/Article';
 import Bundle from './../../components/Bundle';
 import docs from './../../docs/cn/Menu';
 import routes from './../../router';
@@ -55,9 +56,11 @@ export default class Main extends React.PureComponent {
         <Menu items={docs} routes={routes}/>
       </Layout.Col>
       <Layout.Col flex="growAndShrink">
-        {
-          this.state.routes
-        }
+        <Article>
+          {
+            this.state.routes
+          }
+        </Article>
       </Layout.Col>
     </Layout.Row>
   }

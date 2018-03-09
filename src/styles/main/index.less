@@ -1,9 +1,10 @@
 @import './../base.less';
 
 .r-ui-main {
+  user-select: none;
   margin: 24px 0px;
+  
   .r-ui-menu {
-    border-right: @border3;
     width: 220px;
   }
   .r-ui-menu-root {
@@ -11,7 +12,6 @@
     color: @color1;
     font-weight: @weight2;
   }
-
   .r-ui-menu-item {
     padding: 6px 12px;
     color: @color3;
@@ -19,7 +19,6 @@
     border-left: 4px solid transparent;
     font-size: @size7;
     white-space: nowrap;
-    user-select: none;
 
     &:hover {
       background-color: RGBA(0, 0, 0, .1);
@@ -27,12 +26,20 @@
       box-sizing: border-box;
     }
   }
-
   .menu-item-active {
     .r-ui-menu-item {
       color: @color21;
       border-left-color: @color21;
       font-weight: @weight2;
+    }
+  }
+  .r-ui-article {
+    margin: 0px 60px;
+
+    &.markdown-body {
+      h1, h2, h3, h4, h5, h6 {
+        margin-top: 8px;
+      }
     }
   }
 }

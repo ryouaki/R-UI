@@ -1,8 +1,8 @@
 .r-ui-main {
+  user-select: none;
   margin: 24px 0px;
 }
 .r-ui-main .r-ui-menu {
-  border-right: 1px solid #e1e4e8;
   width: 220px;
 }
 .r-ui-main .r-ui-menu-root {
@@ -17,7 +17,6 @@
   border-left: 4px solid transparent;
   font-size: 14px;
   white-space: nowrap;
-  user-select: none;
 }
 .r-ui-main .r-ui-menu-item:hover {
   background-color: rgba(0, 0, 0, 0.1);
@@ -28,4 +27,15 @@
   color: #6f42c1;
   border-left-color: #6f42c1;
   font-weight: 600;
+}
+.r-ui-main .r-ui-article {
+  margin: 0px 60px;
+}
+.r-ui-main .r-ui-article.markdown-body h1,
+.r-ui-main .r-ui-article.markdown-body h2,
+.r-ui-main .r-ui-article.markdown-body h3,
+.r-ui-main .r-ui-article.markdown-body h4,
+.r-ui-main .r-ui-article.markdown-body h5,
+.r-ui-main .r-ui-article.markdown-body h6 {
+  margin-top: 8px;
 }
