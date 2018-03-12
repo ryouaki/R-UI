@@ -84,5 +84,49 @@ React 组件执行一个 \`render()\` 方法，获取输入数据并用于显示
       }
       return <HelloMessage name="Taylor" />
     }
+  },
+  {
+    type: 'sample',
+    content: `
+## 一个简单的组件
+
+React 组件执行一个 \`render()\` 方法，获取输入数据并用于显示。这个例子使用一种类似于 XML 的语法叫做 JSX。
+输入的数据可以在组件的 render() 方法内，通过 \`this.props\` 获得。
+    `,
+    src: [
+      {
+        name: 'Demo.jsx',
+        code: `
+\`\`\`javascript      
+  class HelloMessage extends React.Component {
+    render() {
+      return (
+        <div>
+          Hello {this.props.name}
+        </div>
+      );
+    }
+  }
+  
+  ReactDOM.render(
+    <HelloMessage name="Taylor" />,
+    mountNode
+  );
+\`\`\`
+      `
+      }
+    ],
+    demo: () => {
+      class HelloMessage extends React.Component {
+        render() {
+          return (
+            <div>
+              Hello {this.props.name}
+            </div>
+          );
+        }
+      }
+      return <HelloMessage name="Taylor" />
+    }
   }
 ]

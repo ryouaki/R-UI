@@ -9,7 +9,7 @@ export default class Sample extends React.PureComponent {
       demo = null
     } = this.props;
 
-    return <section>
+    return <React.Fragment>
       <div dangerouslySetInnerHTML={{__html: marked(content)}}/>
       {
         src.map( (source, index) => {
@@ -22,6 +22,6 @@ export default class Sample extends React.PureComponent {
       <div>
         { demo() }
       </div>
-    </section>
+    </React.Fragment>
   }
 }

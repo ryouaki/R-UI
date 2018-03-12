@@ -1,4 +1,7 @@
-export default `
+export default [
+  {
+    type: 'section',
+    content: `
 # 概要
 
 ## R-UI 的目标
@@ -68,4 +71,5 @@ _**Note**_: _*其实真的不必纠结那么多前端框架哪个好，哪个不
   - Tooltip(文字提示)
   - Tabs(标签)
   - Dropdown(下拉菜单)
-`
+`},
+];
