@@ -15,6 +15,7 @@ export default class MainReact extends React.PureComponent {
           break;
         case 'sample':
           component = <Sample key={ doc.type + index } { ...doc } />;
+          break;
         default:
           break;
       }

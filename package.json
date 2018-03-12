@@ -15,7 +15,6 @@
   "devDependencies": {
     "classnames": "^2.2.5",
     "github-markdown-css": "^2.10.0",
-    "highlight": "^0.2.4",
     "immutable": "^3.8.2",
     "less": "^3.0.1",
     "marked": "^0.3.16",

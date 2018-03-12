@@ -19,35 +19,26 @@ export default class Main extends React.PureComponent {
     super(props);
 
     this.state = {
-      routes: []
+      routes: this.createRoute()
     }
   }
 
-  componentDidMount() {
-    this.createRoute();
-  }
-
   createRoute() {
-    // 虚拟从后台拉取路由设置
-    new Promise(() => {
-      let routeMap = [];
-      routes.forEach( (root) => {
-        routeMap = routeMap.concat(root.children.map( (route) => {
-          return <Route path={ route.path } key={ route.path }
-            component={ route.component }/>
-        }));
-      });
-      routeMap.push(<Route key={ '/nomatch' } component={(props) => {
-        return <Bundle load={ () => import('./../NoMatch') }>
-            { Component => <Component {...props} /> }
-          </Bundle>
-      }} />);
-      this.setState({
-        routes: <Switch>
-          { routeMap }
-        </Switch>
-      });
+    let routeMap = [];
+    routes.forEach( (root) => {
+      routeMap = routeMap.concat(root.children.map( (route) => {
+        return <Route path={ route.path } key={ route.path }
+          component={ route.component }/>
+      }));
     });
+    routeMap.push(<Route key={ '/nomatch' } component={(props) => {
+      return <Bundle load={ () => import('./../NoMatch') }>
+          { Component => <Component {...props} /> }
+        </Bundle>
+    }} />);
+    return <Switch>
+        { routeMap }
+      </Switch>;
   }
 
   render() {

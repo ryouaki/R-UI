@@ -51,7 +51,7 @@ React 组件执行一个 \`render()\` 方法，获取输入数据并用于显示
     `,
     src: [
       {
-        name: 'demo.jsx',
+        name: 'Demo.jsx',
         code: `
 \`\`\`javascript      
   class HelloMessage extends React.Component {
@@ -72,8 +72,17 @@ React 组件执行一个 \`render()\` 方法，获取输入数据并用于显示
       `
       }
     ],
-    demo: (props) => {
-      return <div>Hello {props.name}</div>
+    demo: () => {
+      class HelloMessage extends React.Component {
+        render() {
+          return (
+            <div>
+              Hello {this.props.name}
+            </div>
+          );
+        }
+      }
+      return <HelloMessage name="Taylor" />
     }
   }
 ]

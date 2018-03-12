@@ -10,27 +10,14 @@ export default class Menu extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      menus: null
-    };
-  }
-
-  componentDidMount() {
     const {
       items = {},
       routes = []
-    } = this.props;
+    } = props;
 
-    this.routesMapMenus(routes, items);
-  }
-
-  routesMapMenus(routes, items) {
-    // 虚拟从后台拉取路由设置
-    new Promise(() => {
-      this.setState({
-        menus: this.makeMenu(routes, items)
-      });
-    });
+    this.state = {
+      menus: this.makeMenu(routes, items)
+    };
   }
 
   makeMenu(routes, items) {

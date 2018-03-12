@@ -1,7 +1,6 @@
 import React from 'react';
 import marked from 'marked';
-import hljs from 'highlight';
-hljs.initHighlightingOnLoad();
+
 export default class Sample extends React.PureComponent {
   render() {
     let {
@@ -11,15 +10,18 @@ export default class Sample extends React.PureComponent {
     } = this.props;
 
     return <section>
-      <div dangerouslySetInnerHTML={{__html: marked(this.props.content)}}/>
+      <div dangerouslySetInnerHTML={{__html: marked(content)}}/>
       {
         src.map( (source, index) => {
           return <div key={index}>
               <p>{source.name}</p>
-              <div dangerouslySetInnerHTML={{__html: hljs.highlightBlock(marked(source.code))}} />
+              <div dangerouslySetInnerHTML={{__html: marked(source.code)}} />
             </div>
         })
       }
+      <div>
+        { demo() }
+      </div>
     </section>
   }
 }
