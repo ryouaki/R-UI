@@ -25,7 +25,11 @@ export default [
       },
       {
         path: '/main/start/base',
-        component: null,
+        component: (props) => {
+          return <Bundle load={ () => import('./../containers/MainBase') }>
+            { Component => <Component {...props} /> }
+          </Bundle>
+        },
       },
       {
         path: '/main/start/think',
