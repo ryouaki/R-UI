@@ -5,6 +5,8 @@ import {
 
 export default class Image extends React.PureComponent {
   render() {
-    return <img src={getPublicUrl(this.props.src)} alt={this.props.alt}/>;
+    return <p align='center'>
+      <img src={getPublicUrl(this.props.src)} alt={this.props.alt}/>
+    </p>
   }
 }
