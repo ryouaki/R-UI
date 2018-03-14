@@ -36,13 +36,11 @@ export default class Sample extends React.PureComponent {
 
   createSample() {
     let {
-      content = '',
       src = [],
-      demo = null
+      demo = () => {}
     } = this.props;
 
     return {
-      content: <div dangerouslySetInnerHTML={{__html: marked(content)}}/>,
       code: <CodePanel 
         codes={src} 
         currentTab={this.state.currentTab}
@@ -66,13 +64,11 @@ export default class Sample extends React.PureComponent {
 
   render() {
     let {
-      content = '',
       code = [],
       demo = null
     } = this.createSample();
 
     return <React.Fragment>
-      { content }
       { code }
       { demo }
     </React.Fragment>

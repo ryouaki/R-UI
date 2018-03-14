@@ -43,13 +43,16 @@ React 也可以运行在服务器端的 Node上，使用 React Native 开发强�
     `,
   },
   {
-    type: 'sample',
+    type: 'section',
     content: `
 ## 一个简单的组件
 
 React 组件执行一个 \`render()\` 方法，获取输入数据并用于显示。这个例子使用一种类似于 XML 的语法叫做 JSX。
 输入的数据可以在组件的 render() 方法内，通过 \`this.props\` 获得。
     `,
+  },
+  {
+    type: 'sample',
     src: [
       {
         name: 'Demo.jsx',
@@ -87,12 +90,15 @@ React 组件执行一个 \`render()\` 方法，获取输入数据并用于显示
     }
   },
   {
-    type: 'sample',
+    type: 'section',
     content: `
 ## 一个应用
 
 使用 \`props\` 和 \`state\`，我们能够组成一个简单的 Todo 应用。这个例子，通过使用 \`state\` 跟踪当前列表中的元素，就像跟踪用户输入的文本框那样。尽管事件处理像是直接绑定在虚拟 DOM 元素上，但是他是通过事件委托来执行的。
     `,
+  },
+  {
+    type: 'sample',
     src: [
       {
         name: 'Demo.jsx',
@@ -223,7 +229,7 @@ React 组件执行一个 \`render()\` 方法，获取输入数据并用于显示
     }
   },
   {
-    type: 'sample',
+    type: 'section',
     content: `
 ## 使用外部插件的组件
 
@@ -231,6 +237,9 @@ React 是非常灵活的，并且提供了钩子用于使用其他的包或者�
 
 _*Note*: 这个例子中的 remarkable 无法从 npm 安装，被我替换成 marked 了。_
     `,
+  },
+  {
+    type: 'sample',
     src: [
       {
         name: 'Demo.jsx',

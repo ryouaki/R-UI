@@ -2,6 +2,7 @@ import React from 'react';
 
 import Section from './../Slot/Section';
 import Sample from './../Slot/Sample';
+import Image from './../Slot/Image';
 
 import './../../styles/slot/index.css';
 
@@ -15,6 +16,9 @@ export default class Content extends React.PureComponent {
           break;
         case 'sample':
           component = <Sample key={ doc.type + index } { ...doc } />;
+          break;
+        case 'image':
+          component = <Image key={ doc.type + index } { ...doc } />;
           break;
         default:
           break;
