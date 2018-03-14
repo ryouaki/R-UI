@@ -1,4 +1,5 @@
 import React from 'react';
+import marked from 'marked';
 
 export default [
   {
@@ -88,45 +89,225 @@ React 组件执行一个 \`render()\` 方法，获取输入数据并用于显示
   {
     type: 'sample',
     content: `
-## 一个简单的组件
+## 一个应用
 
-React 组件执行一个 \`render()\` 方法，获取输入数据并用于显示。这个例子使用一种类似于 XML 的语法叫做 JSX。
-输入的数据可以在组件的 render() 方法内，通过 \`this.props\` 获得。
+使用 \`props\` 和 \`state\`，我们能够组成一个简单的 Todo 应用。这个例子，通过使用 \`state\` 跟踪当前列表中的元素，就像跟踪用户输入的文本框那样。尽管事件处理像是直接绑定在虚拟 DOM 元素上，但是他是通过事件委托来执行的。
     `,
     src: [
       {
         name: 'Demo.jsx',
         code: `
 \`\`\`javascript      
-  class HelloMessage extends React.Component {
+  class TodoApp extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = { items: [], text: '' };
+      this.handleChange = this.handleChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
     render() {
       return (
         <div>
-          Hello {this.props.name}
+          <h3>TODO</h3>
+          <TodoList items={this.state.items} />
+          <form onSubmit={this.handleSubmit}>
+            <input
+              onChange={this.handleChange}
+              value={this.state.text}
+            />
+            <button>
+              Add #{this.state.items.length + 1}
+            </button>
+          </form>
         </div>
       );
     }
+
+    handleChange(e) {
+      this.setState({ text: e.target.value });
+    }
+
+    handleSubmit(e) {
+      e.preventDefault();
+      if (!this.state.text.length) {
+        return;
+      }
+      const newItem = {
+        text: this.state.text,
+        id: Date.now()
+      };
+      this.setState(prevState => ({
+        items: prevState.items.concat(newItem),
+        text: ''
+      }));
+    }
   }
-  
-  ReactDOM.render(
-    <HelloMessage name="Taylor" />,
-    mountNode
-  );
+
+  class TodoList extends React.Component {
+    render() {
+      return (
+        <ul>
+          {this.props.items.map(item => (
+            <li key={item.id}>{item.text}</li>
+          ))}
+        </ul>
+      );
+    }
+  }
+
+  ReactDOM.render(<TodoApp />, mountNode);
 \`\`\`
       `
       }
     ],
     demo: () => {
-      class HelloMessage extends React.Component {
+      class TodoApp extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { items: [], text: '' };
+          this.handleChange = this.handleChange.bind(this);
+          this.handleSubmit = this.handleSubmit.bind(this);
+        }
+    
         render() {
           return (
             <div>
-              Hello {this.props.name}
+              <h3>TODO</h3>
+              <TodoList items={this.state.items} />
+              <form onSubmit={this.handleSubmit}>
+                <input
+                  onChange={this.handleChange}
+                  value={this.state.text}
+                />
+                <button>
+                  Add #{this.state.items.length + 1}
+                </button>
+              </form>
+            </div>
+          );
+        }
+    
+        handleChange(e) {
+          this.setState({ text: e.target.value });
+        }
+    
+        handleSubmit(e) {
+          e.preventDefault();
+          if (!this.state.text.length) {
+            return;
+          }
+          const newItem = {
+            text: this.state.text,
+            id: Date.now()
+          };
+          this.setState(prevState => ({
+            items: prevState.items.concat(newItem),
+            text: ''
+          }));
+        }
+      }
+    
+      class TodoList extends React.Component {
+        render() {
+          return (
+            <ul>
+              {this.props.items.map(item => (
+                <li key={item.id}>{item.text}</li>
+              ))}
+            </ul>
+          );
+        }
+      }
+      return <TodoApp />
+    }
+  },
+  {
+    type: 'sample',
+    content: `
+## 使用外部插件的组件
+
+React 是非常灵活的，并且提供了钩子用于使用其他的包或者框架。在这个例子用，通过 \`marked\`这样一个外部的 Markdown 包，对 \`<textarea>\` 的值进行实时转换。
+
+_*Note*: 这个例子中的 remarkable 无法从 npm 安装，被我替换成 marked 了。_
+    `,
+    src: [
+      {
+        name: 'Demo.jsx',
+        code: `
+\`\`\`javascript      
+  class MarkdownEditor extends React.Component {
+    constructor(props) {
+      super(props);
+      this.handleChange = this.handleChange.bind(this);
+      this.state = { value: 'Type some *markdown* here!' };
+    }
+
+    handleChange(e) {
+      this.setState({ value: e.target.value });
+    }
+
+    getRawMarkup() {
+      return { __html: marked(this.state.value) };
+    }
+
+    render() {
+      return (
+        <div className="MarkdownEditor">
+          <h3>Input</h3>
+          <textarea
+            onChange={this.handleChange}
+            defaultValue={this.state.value}
+          />
+          <h3>Output</h3>
+          <div
+            className="content"
+            dangerouslySetInnerHTML={this.getRawMarkup()}
+          />
+        </div>
+      );
+    }
+  }
+
+  ReactDOM.render(<MarkdownEditor />, mountNode);
+\`\`\`
+      `
+      }
+    ],
+    demo: () => {
+      class MarkdownEditor extends React.Component {
+        constructor(props) {
+          super(props);
+          this.handleChange = this.handleChange.bind(this);
+          this.state = { value: 'Type some *markdown* here!' };
+        }
+    
+        handleChange(e) {
+          this.setState({ value: e.target.value });
+        }
+    
+        getRawMarkup() {
+          return { __html: marked(this.state.value) };
+        }
+    
+        render() {
+          return (
+            <div className="MarkdownEditor">
+              <h3>Input</h3>
+              <textarea
+                onChange={this.handleChange}
+                defaultValue={this.state.value}
+              />
+              <h3>Output</h3>
+              <div
+                className="content"
+                dangerouslySetInnerHTML={this.getRawMarkup()}
+              />
             </div>
           );
         }
       }
-      return <HelloMessage name="Taylor" />
+      return <MarkdownEditor/>
     }
   }
 ]

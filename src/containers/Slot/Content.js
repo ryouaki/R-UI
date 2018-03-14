@@ -3,6 +3,8 @@ import React from 'react';
 import Section from './../Slot/Section';
 import Sample from './../Slot/Sample';
 
+import './../../styles/slot/index.css';
+
 export default class Content extends React.PureComponent {
   render() {
     return this.props.docs.map( (doc, index) => {
