@@ -1,7 +1,11 @@
 import React from 'react';
 
-export default class MainReact extends React.Component {
+import Slot from './../Slot';
+
+import docs from './../../docs/cn/MainCreate';
+
+export default class MainCreate extends React.PureComponent {
   render() {
-    return '222';
+    return <Slot docs={ docs } />
   }
 }

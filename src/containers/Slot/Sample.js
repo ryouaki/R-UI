@@ -47,16 +47,15 @@ export default class Sample extends React.PureComponent {
         codes={src} 
         currentTab={this.state.currentTab}
         clickTabHandler={ (index) => {
-        this.setState({
-          currentTab: index
-        })
+          this.setState({
+            currentTab: index
+          })
+        }}>
+        {
+          src.map( (source, index) => {
+            return <div key={index} dangerouslySetInnerHTML={{__html: marked(source.code)}} />
+          })
         }
-      }>
-      {
-        src.map( (source, index) => {
-          return <div key={index} dangerouslySetInnerHTML={{__html: marked(source.code)}} />
-        })
-      }
       </CodePanel>,
       demo: <div className="sample-demo"> 
         <p>结果</p>

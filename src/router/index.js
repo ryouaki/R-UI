@@ -34,6 +34,14 @@ export default [
       {
         path: '/main/start/flux',
         component: null,
+      },
+      {
+        path: '/main/start/router',
+        component: null,
+      },
+      {
+        path: '/main/start/redux',
+        component: null,
       }
     ]
   },

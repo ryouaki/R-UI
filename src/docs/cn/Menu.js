@@ -5,6 +5,8 @@ export default {
   '/main/start/base': 'React 的基本语法',
   '/main/start/think': 'Thinking in React',
   '/main/start/flux': 'Flux',
+  '/main/start/router': 'React Router(V4.0)',
+  '/main/start/redux': 'Redux',
 
   '/main/base': '基础组件',
   '/main/base/layout': 'Layout(布局)',

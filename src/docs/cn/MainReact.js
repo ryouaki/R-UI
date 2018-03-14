@@ -295,6 +295,7 @@ _*Note*: 这个例子中的 remarkable 无法从 npm 安装，被我替换成 ma
             <div className="MarkdownEditor">
               <h3>Input</h3>
               <textarea
+                style={{height: '100px', width: '400px', fontSize: '16px'}}
                 onChange={this.handleChange}
                 defaultValue={this.state.value}
               />

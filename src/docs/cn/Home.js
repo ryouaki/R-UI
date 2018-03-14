@@ -44,6 +44,8 @@ _**Note**_: _*其实真的不必纠结那么多前端框架哪个好，哪个不
   - React 的基本语法
   - Thinking in React
   - Flux
+  - React Router(V4.0)
+  - Redux
 - 基础组件
   - Layout(布局)
   - Button(按钮)
