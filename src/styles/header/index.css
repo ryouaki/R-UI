@@ -8,7 +8,7 @@
 .r-ui-header a:visited,
 .r-ui-header a:hover,
 .r-ui-header a:active {
-  color: #0366d6;
+  color: #6f42c1;
 }
 .r-ui-header .logo {
   font-size: 32px;
@@ -40,7 +40,7 @@
 }
 .r-ui-header .navigate .item {
   font-size: 16px;
-  color: #0366d6;
+  color: #6f42c1;
   cursor: pointer;
   position: relative;
   padding: 0 4px;
