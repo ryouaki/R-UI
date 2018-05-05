@@ -3,7 +3,6 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
-import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 import Bundle from './../components/Bundle';
 import { getPublicUrl } from './../common';

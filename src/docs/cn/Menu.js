@@ -2,7 +2,7 @@ export default {
   '/main/start': '开始',
   '/main/start/react': '认识 React',
   '/main/start/create': '从 create-react-app 开始',
-  '/main/start/base': 'React 的基本语法',
+  '/main/start/base': 'React 的基本知识',
   '/main/start/think': 'Thinking in React',
   '/main/start/flux': 'Flux',
   '/main/start/router': 'React Router(V4.0)',
