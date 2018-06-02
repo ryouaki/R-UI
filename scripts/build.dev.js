@@ -20,10 +20,10 @@ process.on('unhandledRejection', err => {
 });
 
 // Ensure environment variables are read.
-require('../config/env');
+require('react-scripts/config/env');
 // @remove-on-eject-begin
 // Do the preflight check (only happens before eject).
-const verifyPackageTree = require('./utils/verifyPackageTree');
+const verifyPackageTree = require('react-scripts/scripts/utils/verifyPackageTree');
 if (process.env.SKIP_PREFLIGHT_CHECK !== 'true') {
   verifyPackageTree();
 }
@@ -42,9 +42,9 @@ const {
   prepareUrls,
 } = require('react-dev-utils/WebpackDevServerUtils');
 const openBrowser = require('react-dev-utils/openBrowser');
-const paths = require('../config/paths');
-const config = require('../config/webpack.config.dev');
-const createDevServerConfig = require('../config/webpackDevServer.config');
+const paths = require('react-scripts/config/paths');
+const config = require('react-scripts/config/webpack.config.dev');
+const createDevServerConfig = require('react-scripts/config/webpackDevServer.config');
 
 const useYarn = fs.existsSync(paths.yarnLockFile);
 const isInteractive = process.stdout.isTTY;
