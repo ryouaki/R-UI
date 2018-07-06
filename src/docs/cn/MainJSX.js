@@ -2,13 +2,10 @@ export default [
   {
     type: 'section',
     content: `
-# React 的基本知识
+# React - JSX
 
 使用 React 并不需要学习额外的编程语言或者是技术，因为你只需要熟悉基本的 JavaScript 以及 ES6 的部分新特性即可进行开发。
-对于 JSX 可能需要你学习一下，不过内容也非常的少。因此，在进行 React 开发，我们需要着重掌握以下知识点：
-
-- JSX (其实JSX并没有什么)
-- React 生命周期（这是一个非常重要的知识点，任何一个 MVVM 框架，我们只有在熟悉其生命周期的情况下才能熟练的使用这个框架）
+对于 JSX 可能需要你学习一下，不过内容也非常的少。因此，在进行 React 开发，我们需要着重掌握 JSX。
     `,
   },
   {
@@ -251,9 +248,6 @@ Babel 编译后的 JSX 元素其实是 \`React.createElement()\` 的调用，这
   }
 \`\`\`
 > _**Note**：注意这里的key，这是 JSX 中每一个 element 节点的固有属性，所以自己在为组件设置 props 的时候不能使用 key 作为属性名。_
-
-### constructor()
-构造函数是我们在
     `,
   }
 ]

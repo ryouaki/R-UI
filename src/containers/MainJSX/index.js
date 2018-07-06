@@ -2,9 +2,9 @@ import React from 'react';
 
 import Slot from './../Slot';
 
-import docs from './../../docs/cn/MainBase';
+import docs from './../../docs/cn/MainJSX';
 
-export default class MainBase extends React.PureComponent {
+export default class MainJSX extends React.PureComponent {
   render() {
     return <Slot docs={ docs } />
   }

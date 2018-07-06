@@ -24,9 +24,17 @@ export default [
         },
       },
       {
-        path: '/main/start/base',
+        path: '/main/start/jsx',
         component: (props) => {
-          return <Bundle load={ () => import('./../containers/MainBase') }>
+          return <Bundle load={ () => import('./../containers/MainJSX') }>
+            { Component => <Component {...props} /> }
+          </Bundle>
+        },
+      },
+      {
+        path: '/main/start/lifecycle',
+        component: (props) => {
+          return <Bundle load={ () => import('./../containers/MainLifecycle') }>
             { Component => <Component {...props} /> }
           </Bundle>
         },
