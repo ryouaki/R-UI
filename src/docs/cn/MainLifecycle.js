@@ -1,12 +1,15 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+
 export default [
   {
     type: 'section',
     content: `
 # React - 生命周期
 
-任何一个基于 vDom 的现代前端框架都具有生命周期的概念，生命周期告诉我们目前我们的 UI 处于一个什么阶段，我们可以在这个时候做什么，不能做什么，需要注意什么。
+任何一个基于 vDom 的现代前端框架都具有生命周期的概念，生命周期告诉我们目前我们的 UI 处于一个什么阶段，我们可以在这个时候做什么，不能做什么，需要注意什么。熟悉生命周期对于我们学习一个现代前端框架来说至关重要。
 
-我们可以参考下图：
+
     `,
   },
   {
@@ -54,7 +57,170 @@ export default [
 * 实例的属性：
   - props
   - state
+    `,
+  },
+  {
+    type: 'sample',
+    src: [
+      { 
+        name: 'Demo.jsx',
+        code: `
+\`\`\`js
+  class Sample extends React.Component {
+    displayName = 'Sample';
+    static defaultProps = {
+      propName: 'Sample'
+    };
 
+    constructor(props) {
+      super(props);
+      console.log('lifecycle: constructor');
+      this.state = {
+        update: false
+      };
+    }
+
+    static getDerivedStateFromProps() {
+      console.log('lifecycle: getDerivedStateFromProps');
+      return null;
+    }
+
+    componentWillMount() {
+      console.log('lifecycle: componentWillMount(废弃)');
+    }
+
+    componentDidMount() {
+      console.log('lifecycle: componentDidMount');
+    }
+
+    componentWillReceiveProps() {
+      console.log('lifecycle: componentWillReceiveProps(废弃)');
+    }
+
+    shouldComponentUpdate() {
+      console.log('lifecycle: shouldComponentUpdate');
+      return true;
+    }
+
+    componentWillUpdate() {
+      console.log('lifecycle: componentWillUpdate(废弃)');
+    }
+
+    getSnapshotBeforeUpdate() {
+      console.log('lifecycle: getSnapshotBeforeUpdate');
+      return null;
+    }
+
+    componentDidUpdate() {
+      console.log('lifecycle: componentDidUpdate');
+    }
+
+    componentWillUnmount() {
+      console.log('lifecycle: componentWillUnmount');
+    }
+
+    componentDidCatch() {
+      console.log('lifecycle: componentDidCatch');
+    }
+
+    render() {
+      console.log('lifecycle: render');
+      return <div ref={(div) => this.ref = div}>
+        React Component Lifecycle Demo<br/>
+        displayName: {this.displayName}<br/>
+        defaultProps: {this.props.propName}<br/>
+        <button onClick={() => {
+            this.setState({
+              update: this.state.update
+            })
+          }}>更新</button><br/>
+        遗憾的是我们没办法虚拟异常和卸载的情况，当然，你切换到其它页面就可以了。
+      </div>
+    }
+  }
+\`\`\`        
+        `
+      }
+    ],
+    demo: () => {
+      class Sample extends React.Component {
+        displayName = 'Sample';
+        static defaultProps = {
+          propName: 'Sample'
+        };
+
+        constructor(props) {
+          super(props);
+          console.log('lifecycle: constructor');
+          this.state = {
+            update: false
+          };
+        }
+
+        static getDerivedStateFromProps() {
+          console.log('lifecycle: getDerivedStateFromProps');
+          return null;
+        }
+
+        componentWillMount() {
+          console.log('lifecycle: componentWillMount(废弃)');
+        }
+
+        componentDidMount() {
+          console.log('lifecycle: componentDidMount');
+        }
+
+        componentWillReceiveProps() {
+          console.log('lifecycle: componentWillReceiveProps(废弃)');
+        }
+
+        shouldComponentUpdate() {
+          console.log('lifecycle: shouldComponentUpdate');
+          return true;
+        }
+
+        componentWillUpdate() {
+          console.log('lifecycle: componentWillUpdate(废弃)');
+        }
+
+        getSnapshotBeforeUpdate() {
+          console.log('lifecycle: getSnapshotBeforeUpdate');
+          return null;
+        }
+
+        componentDidUpdate() {
+          console.log('lifecycle: componentDidUpdate');
+        }
+
+        componentWillUnmount() {
+          console.log('lifecycle: componentWillUnmount');
+        }
+
+        componentDidCatch() {
+          console.log('lifecycle: componentDidCatch');
+        }
+
+        render() {
+          console.log('lifecycle: render');
+          return <div ref={(div) => this.ref = div}>
+            React Component Lifecycle Demo<br/>
+            displayName: {this.displayName}<br/>
+            defaultProps: {this.props.propName}<br/>
+            <button onClick={() => {
+                this.setState({
+                  update: this.state.update
+                })
+              }}>更新</button><br/>
+            遗憾的是我们没办法虚拟异常和卸载的情况，当然，你切换到其它页面就可以了。
+          </div>
+        }
+      }
+      return <Sample/>
+    }
+  },
+  {
+    type: 'section',
+    content: `
 ### render()
 伴随着 props 或者 state 变化而触发的 API，他必须返回一个 JSX 对象或者是 null，String，Number，Portals，Booleans。
 

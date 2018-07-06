@@ -13,7 +13,7 @@ let opts = storeCreate();
 
 ReactDOM.render(
   <Provider store={opts.store}> 
-    <Router history={opts.history}>
+    <Router>
       <Containers />
     </Router> 
   </Provider>, 
