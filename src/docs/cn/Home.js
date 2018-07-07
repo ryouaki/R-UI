@@ -41,7 +41,8 @@ _**Note**_: _*其实真的不必纠结那么多前端框架哪个好，哪个不
 - 开始
   - 认识 React
   - 从 create-react-app 开始
-  - React 的基本语法
+  - React - JSX
+  - React - 生命周期和状态
   - Thinking in React
   - Flux
   - React Router(V4.0)

@@ -3,7 +3,7 @@ export default {
   '/main/start/react': '认识 React',
   '/main/start/create': '从 create-react-app 开始',
   '/main/start/jsx': 'React - JSX',
-  '/main/start/lifecycle': 'React - 生命周期',
+  '/main/start/lifecycle': 'React - 生命周期和状态',
   '/main/start/think': 'Thinking in React',
   '/main/start/flux': 'Flux',
   '/main/start/router': 'React Router(V4.0)',
