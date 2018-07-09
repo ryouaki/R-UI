@@ -3,22 +3,20 @@ export default [
     type: 'section',
     content: `
 # Flux 深度解读
-FLux 是 facebook 用于构建 Web 客户端的一种应用架构。
 
-Flux is the application architecture that Facebook uses for building client-side web applications.  It complements React's composable view components by utilizing a unidirectional data flow.  It's more of a pattern rather than a formal framework, and you can start using Flux immediately without a lot of new code.
+FLux 是 facebook 用于构建 Web 客户端的一种应用架构。它利用单向数据流，来帮助复杂的 React 组合组件的状态管理。它是一种模式，而不仅仅是一个框架，你可以不需要写任何新代码来将 Flux 直接应用到你的应用当中。
 
-Flux applications have three major parts: the dispatcher, the stores, and the views (React components).  These should not be confused with Model-View-Controller.  Controllers do exist in a Flux application, but they are controller-views — views often found at the top of the hierarchy that retrieve data from the stores and pass this data down to their children.  Additionally, action creators — dispatcher helper methods — are used to support a semantic API that describes all changes that are possible in the application.  It can be useful to think of them as a fourth part of the Flux update cycle.
+基于 Flux 的应用程序需要包含三个主要部分：dispatcher，store 和 view(React组件)。这并不能与 MVC 模式混淆，C 确实存在于 Flux 架构中，但是它们是 controller-views ---- 通常在最顶层的视图需要将数据传递给它的子组件。另外，action 的生产者 dispatcher 相关方法用于描述应用中各种可能的状态改变。这对于我们思考第四部分非常有帮助。
 
-Flux eschews MVC in favor of a unidirectional data flow. When a user interacts with a React view, the view propagates an action through a central dispatcher, to the various stores that hold the application's data and business logic, which updates all of the views that are affected. This works especially well with React's declarative programming style, which allows the store to send updates without specifying how to transition views between states.
+Flux 避开了 MVC，采取了单向数据流，当用户与 React 视图进行交互的时候，视图通过 dispatcher 方法传递一个 action 对象到保存数据和业务逻辑的各个存储对象区 store 中。这些存储区的数据变化会影响所有视图，并导致视图发生更新。这与 React 的编程风格有关，该风格允许通过数据的变化来改变视图，而不需要指定如何通过状态切换视图。
 
-We originally set out to deal correctly with derived data: for example, we wanted to show an unread count for message threads while another view showed a list of threads, with the unread ones highlighted. This was difficult to handle with MVC — marking a single thread as read would update the thread model, and then also need to update the unread count model.  These dependencies and cascading updates often occur in a large MVC application, leading to a tangled weave of data flow and unpredictable results.
+我们最初的目的是能够正确的通过驱动数据：比如，我们希望显示消息线程未读计数，而另一个视图显示线程列表，高亮显示未读线程。这在 MVC 中很难处理 --- 将一个单一线程指派为读更新线程，然后需要更新未读计数。这些依赖和关联经常出现在大型 MVC 应用中。数据流和不可预测的操作交织在一起。
 
-Control is inverted with stores: the stores accept updates and reconcile them as appropriate, rather than depending on something external to update its data in a consistent way. Nothing outside the store has any insight into how it manages the data for its domain, helping to keep a clear separation of concerns. Stores have no direct setter methods like \`setAsRead()\`, but instead have only a single way of getting new data into their self-contained world — the callback they register with the dispatcher.
+控制和存储相反：存储接受更新并在适当的时候进行协调处理，而不是在一致的依赖外部更新数据的方式。存储区外部的任何东西都无法观察它内部的数据变化，这可以帮助我们保持清晰。存储区中并没有提供任何修改数据的方法，而是只有一个简单的途径来将新数据推送到存储区中 -- 注册的 dispatcher。
 
+## 结构和数据流
 
-## Structure and Data Flow
-
-Data in a Flux application flows in a single direction:
+在 Flux 应用中，数据的流向是单一的：
     `,
   },
   {
@@ -29,9 +27,9 @@ Data in a Flux application flows in a single direction:
   {
     type: 'section',
     content: `
-A unidirectional data flow is central to the Flux pattern, and the above diagram should be __the primary mental model for the Flux programmer__. The dispatcher, stores and views are independent nodes with distinct inputs and outputs. The actions are simple objects containing the new data and an identifying _type_ property.  
+单向数据流是 Flux 模式的核心，在上图应该是__Flux 程序的主要模型__。dispatcher ，stores 和 views 是独立的节点，具有不同的数据和输出。actions 是简单的对象，包括一个 type 标实属性和新的数据。
 
-The views may cause a new action to be propagated through the system in response to user interactions:
+视图产生新的 action 在系统中传播，以响应用户的操作：
     `,
   },
   {
@@ -42,7 +40,7 @@ The views may cause a new action to be propagated through the system in response
   {
     type: 'section',
     content: `
-All data flows through the dispatcher as a central hub.  Actions are provided to the dispatcher in an <em>action creator</em> method, and most often originate from user interactions with the views.  The dispatcher then invokes the callbacks that the stores have registered with it, dispatching actions to all stores.  Within their registered callbacks, stores respond to whichever actions are relevant to the state they maintain.  The stores then emit a <em>change</em> event to alert the controller-views that a change to the data layer has occurred.  Controller-views listen for these events and retrieve data from the stores in an event handler. The controller-views call their own <code>setState()</code> method, causing a re-rendering of themselves and all of their descendants in the component tree.
+所有的数据流都要通过 dispatcher 来完成。action 在 action 生成器中被提供给 dispatcher，并且大部分来自于用户的页面交互操作。然后 dispatcher 执行在 store 上注册的回调，将 action 传入到所有的 store 中。在这些注册的回调中，store 对 action 做对应的关联处理。然后这些 store 通知一个变更事件，去告知 controller-views 数据发生了变化。controller-views 调用他们自己的 setState 方法，触发一次重新渲染。更新整个相关的组件树。
     `,
   },
   {
@@ -53,36 +51,34 @@ All data flows through the dispatcher as a central hub.  Actions are provided to
   {
     type: 'section',
     content: `
-This structure allows us to reason easily about our application in a way that is reminiscent of _functional reactive programming_, or more specifically _data-flow programming_ or _flow-based programming_, where data flows through the application in a single direction — there are no two-way bindings. Application state is maintained only in the stores, allowing the different parts of the application to remain highly decoupled. Where dependencies do occur between stores, they are kept in a strict hierarchy, with synchronous updates managed by the dispatcher.
+这种结构可以帮助我们很容易的预测程序的执行结果，这种方式让我们联想起了函数式编程，或者数据流编程，基于数据的编程。在这些编程中，数据以单一的方向在程序中流动 -- 不存在双向绑定。应用状态仅存在 store 中，所以应用程序可以不同程度的进行解藕。在 store 间保持着依赖关系，通过 dispatcher 进行同步的更新管理。
 
-We found that two-way data bindings led to cascading updates, where changing one object led to another object changing, which could also trigger more updates. As applications grew, these cascading updates made it very difficult to predict what would change as the result of one user interaction. When updates can only change data within a single round, the system as a whole becomes more predictable.
+我们发现，双向数据绑定导致联动更新，其中一个对象的改变就会导致另一个对象改变，也可能出发更多的更新。随着程序的增长，这些联动更新变得难以预测。一次用户操作会带来复杂的数据更新，导致难以预测。但是，如果只能单向的更新数据的话，这一切将变得更好预测。
 
-Let's look at the various parts of Flux up close. A good place to start is the dispatcher.
+让我们自己看看 Flux 的各个组成部分。
 
+### 一个单一的 Dispatcher
 
-### A Single Dispatcher
+dispatcher 作为数据流管理程序中的派发器。它其实是一个被注册到 store 中的一个回调函数。并没有自己的职能 -- 它将 action 传入到 store 中。每一个 store 都需要注册并提供一个回调函数。每一个 action 都是通过 dispatcher 被传入到 store 中的。
 
-The dispatcher is the central hub that manages all data flow in a Flux application. It is essentially a registry of callbacks into the stores and has no real intelligence of its own — it is a simple mechanism for distributing the actions to the stores. Each store registers itself and provides a callback. When an action creator provides the dispatcher with a new action, all stores in the application receive the action via the callbacks in the registry.
+随着应用的迭代，dispatcher 变得更加重要，它可以用于在 store 间通过调用回调来按顺序管理依赖关系。store 可以等待其他 store 完成更新，然后再更新自己。
 
-As an application grows, the dispatcher becomes more vital, as it can be used to manage dependencies between the stores by invoking the registered callbacks in a specific order.  Stores can declaratively wait for other stores to finish updating, and then update themselves accordingly.
-
-The same dispatcher that Facebook uses in production is available through [npm](https://www.npmjs.com/package/flux), [Bower](http://bower.io/), or [GitHub](https://github.com/facebook/flux).
-
+Facebook 用于生产的 dispatcher 可以在[npm](https://www.npmjs.com/package/flux), [Bower](http://bower.io/), 和 [GitHub](https://github.com/facebook/flux)中找到。
 
 ### Stores
 
-Stores contain the application state and logic. Their role is somewhat similar to a model in a traditional MVC, but they manage the state of many objects — they do not represent a single record of data like ORM models do. Nor are they the same as Backbone's collections. More than simply managing a collection of ORM-style objects, stores manage the application state for a particular __domain__ within the application.
+store 中包含应用的状态和逻辑。它的角色有点类似 MVC 中的 M，但是它们管理一些对象状态 -- 他们不像 ORM 那样表示单个数据记录。这和 Backbone 的集合不同。和管理单一的 ORM 风格的数据对象集合不同。store 管理特定域内的数据状态。
 
-For example, Facebook's [Lookback Video Editor](https://facebook.com/lookback/edit) utilized a TimeStore that kept track of the playback time position and the playback state. On the other hand, the same application's ImageStore kept track of a collection of images.  The TodoStore in our [TodoMVC example](https://github.com/facebook/flux/tree/master/examples/flux-todomvc/) is similar in that it manages a collection of to-do items.  A store exhibits characteristics of both a collection of models and a singleton model of a logical domain.
+例如：Facebook 的 Lookback 媒体编辑工具使用了一个叫做 [Lookback Video Editor](https://facebook.com/lookback/edit) 的技术来跟踪回放时间和回放状态。在另一方面，同一个应用的镜像存储保持一个图片的集合。在 [TodoMVC 例子](https://github.com/facebook/flux/tree/master/examples/flux-todomvc/) 这个例子的中， TodoStore 用于管理一个简单的代办事项集合。Store 即是一个数据集又是一个单模型域。
 
-As mentioned above, a store registers itself with the dispatcher and provides it with a callback. This callback receives the action as a parameter. Within the store's registered callback, a switch statement based on the action's type is used to interpret the action and to provide the proper hooks into the store's internal methods. This allows an action to result in an update to the state of the store, via the dispatcher. After the stores are updated, they broadcast an event declaring that their state has changed, so the views may query the new state and update themselves.
-
+就像上面提到的，一个 store 会注册一个 dispatcher 并且提供一个回调函数。这个回调函数接收 action 对象作为参数。对于 store 中注册的回调函数中，根据操作的类型提供一个 switch 操作来对 action 的 type 有针对性的进行处理。这允许操作通过 dispatcher 更新 store 中的数据状态。之后，store 就进行了更新，他们通过广播事件来通知它们的状态发生了改变，因此视图会查询最新的状态，然后更新自己。
 
 ### Views and Controller-Views
 
-React provides the kind of composable and freely re-renderable views we need for the view layer. Close to the top of the nested view hierarchy, a special kind of view listens for events that are broadcast by the stores that it depends on. We call this a controller-view, as it provides the glue code to get the data from the stores and to pass this data down the chain of its descendants. We might have one of these controller-views governing any significant section of the page.
+React 提供了视图层所需要的各种组合方式以及自由的视图层渲染方式。在视图层的最顶层，一种特殊的视图用于监听它所依赖的 store 中的广播事件(注册的回调)。我们称之为 controller-view(react-redux的connectWrapper)，因为它们提供了从 store 中获取数据的方式，并将这些数据传递给它的后代。我们也许需要一个 controller-view 来管理页面的各个部分。
 
-When it receives the event from the store, it first requests the new data it needs via the stores' public getter methods. It then calls its own \`setState()\` or \`forceUpdate()\` methods, causing its \`render()\` method and the \`render()\` method of all its descendants to run.
+当它从 store 中接受到事件，它首先通过 store 提供的取数据方法拿到新的数据(mapStateToProps)。然后调用自己的 setState 或者是 forceUpdate 方法来让 React组件及其子组件重新渲染。
+
 
 We often pass the entire state of the store down the chain of views in a single object, allowing different descendants to use what they need. In addition to keeping the controller-like behavior at the top of the hierarchy, and thus keeping our descendant views as functionally pure as possible, passing down the entire state of the store in a single object also has the effect of reducing the number of props we need to manage.
 
