@@ -79,11 +79,9 @@ React 提供了视图层所需要的各种组合方式以及自由的视图层�
 
 当它从 store 中接受到事件，它首先通过 store 提供的取数据方法拿到新的数据(mapStateToProps)。然后调用自己的 setState 或者是 forceUpdate 方法来让 React组件及其子组件重新渲染。
 
+我们经常将整个 store 状态传递给单个对象的视图链中，允许不同的子组件使用它们需要的东西。除了将控制器的行为保持在视图结构的顶层，从而使我们的后代视图在功能上尽可能的纯粹之外，在单一对象中专递整个状态可以减少我们需要管理的数量。
 
-We often pass the entire state of the store down the chain of views in a single object, allowing different descendants to use what they need. In addition to keeping the controller-like behavior at the top of the hierarchy, and thus keeping our descendant views as functionally pure as possible, passing down the entire state of the store in a single object also has the effect of reducing the number of props we need to manage.
-
-Occasionally we may need to add additional controller-views deeper in the hierarchy to keep components simple.  This might help us to better encapsulate a section of the hierarchy related to a specific  data domain.  Be aware, however, that controller-views deeper in the hierarchy can violate the singular flow of data by introducing a new, potentially conflicting entry point for the data flow.  In making the decision of whether to add a deep controller-view, balance the gain of simpler components against the complexity of multiple data updates flowing into the hierarchy at different points.  These multiple data updates can lead to odd effects, with React's render method getting invoked repeatedly by updates from different controller-views, potentially increasing the difficulty of debugging.
-
+有时候我们需要在视图结构中添加更多的 controller-view，以保持组件的单一性。这有助于我们更好的封装与特定数据相关联的视图的一部分。但是，请注意，在层次结构中更深的 controller-view 可能会为数据流引入新的，可能冲突的数据。在决定是否需要添加深度 controller-view 时，要平衡简单组件和不同位置流引入更多数据更新的复杂度。这些多个数据更新可能会导致奇怪的效果，通过来自不同的 controller-view 更新反复调用 React 的 render 方法，这可能会增加调试难度。
 
 ### Actions
 
