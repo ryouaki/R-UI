@@ -49,7 +49,11 @@ export default [
       },
       {
         path: '/main/start/flux',
-        component: null,
+        component: (props) => {
+          return <Bundle load={ () => import('./../containers/Flux') }>
+            { Component => <Component {...props} /> }
+          </Bundle>
+        },
       },
       {
         path: '/main/start/router',
