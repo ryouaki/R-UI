@@ -41,7 +41,11 @@ export default [
       },
       {
         path: '/main/start/think',
-        component: null,
+        component: (props) => {
+          return <Bundle load={ () => import('./../containers/MainThink') }>
+            { Component => <Component {...props} /> }
+          </Bundle>
+        },
       },
       {
         path: '/main/start/flux',
