@@ -57,7 +57,11 @@ export default [
       },
       {
         path: '/main/start/router',
-        component: null,
+        component: (props) => {
+          return <Bundle load={ () => import('./../containers/MainRouter') }>
+            { Component => <Component {...props} /> }
+          </Bundle>
+        },
       },
       {
         path: '/main/start/redux',
