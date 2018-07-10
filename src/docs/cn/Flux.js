@@ -85,16 +85,15 @@ React 提供了视图层所需要的各种组合方式以及自由的视图层�
 
 ### Actions
 
-The dispatcher exposes a method that allows us to trigger a dispatch to the stores, and to include a payload of data, which we call an action. The action's creation may be wrapped into a semantic helper method which sends the action to the dispatcher. For example, we may want to change the text of a to-do item in a to-do list application. We would create an action with a function signature like \`updateText(todoId, newText)\` in our \`TodoActions\` module. This method may be invoked from within our views' event handlers, so we can call it in response to a user interaction. This action creator method also adds a _type_ to the action, so that when the action is interpreted in the store, it can respond appropriately. In our example, this type might be named something like \`TODO_UPDATE_TEXT\`.
+dispatcher 提供一个对外的方法，我们通过这个方法向 store 派发 action 对象。我们会将生成 action 对象的逻辑封装成一个方法，该方法触发 dispatcher 并将 action 传入 dispatcher。例如：我们需要将代办事项列表中的待办事项内容。我们需要在 TodoActions 中创建一个函数 updateText(todoId, newText)，在这个函数中生成我们需要的 action 对象，并将之绑定到 view 的一个交互事件上。当用户触发这个交互事件的时候，这个方法就被执行了，创建了 action 对象，并将其传递给 dispatcher，dispatcher 将 action 传递给 store，store 根据 action 中的 type 属性进行数据处理。这个 type 属性可以像这个样子 TODO_UPDATE_TEXT。
 
-Actions may also come from other places, such as the server. This happens, for example, during data initialization. It may also happen when the server returns an error code or when the server has updates to provide to the application.
+Action 也可以从其它地方获取，比如服务器。例如在初始化阶段，当服务器返回错误代码，或者服务器有数据更新的时候，就会发生这种情况。
 
+### 关于Dispatcher?
 
-### What About that Dispatcher?
+像之前提到的那样，dispatcher 也可以在相关的 store 之间进行分发。这个功能可以通过 Dispatcher 类中的 waitFor 来完成，我们不需要在一些简单应用中这么做。比如[TodoMVC application](https://github.com/facebook/flux/tree/master/examples/flux-todomvc/)，但是我们在更大更复杂的应用中，这么做是非常有必要的。
 
-As mentioned earlier, the dispatcher is also able to manage dependencies between stores. This functionality is available through the \`waitFor()\` method within the Dispatcher class.  We did not need to use this method within the extremely simple [TodoMVC application](https://github.com/facebook/flux/tree/master/examples/flux-todomvc/), but it becomes vital in a larger, more complex application.
-
-Within the TodoStore's registered callback we could explicitly wait for any dependencies to first update before moving forward:
+TodoStore 中注册了一个回调，我们可以在这里更新数据或者是做更进一步的处理：
 
 \`\`\`javascript
 case 'TODO_CREATE':
@@ -107,9 +106,9 @@ case 'TODO_CREATE':
   break;
 \`\`\`
 
-\`waitFor()\` accepts a single argument which is an array of dispatcher registry indexes, often called _dispatch tokens_. Thus the store that is invoking \`waitFor()\` can depend on the state of another store to inform how it should update its own state.
+waitFor 接受一个参数，该参数是一个包含多个 dispatcher 的数组。因此，store 调用 waitFor 可以像处理自己的数据状态一样处理其它 store 中的数据状态。
 
-A dispatch token is returned by \`register()\` when registering callbacks for the Dispatcher:
+在为 Dispatcher 注册回调的时候，它会返回一个 dispatcher token。
 
 \`\`\`javascript
 PrependedTextStore.dispatchToken = Dispatcher.register(function (payload) {
@@ -117,7 +116,7 @@ PrependedTextStore.dispatchToken = Dispatcher.register(function (payload) {
 });
 \`\`\`
 
-For more on \`waitFor()\`, actions, action creators and the dispatcher, please see [Flux: Actions and the Dispatcher](http://facebook.github.io/react/blog/2014/07/30/flux-actions-and-the-dispatcher.html).
+更多有关 waitFor，actions，action creaters 和 dispatcher 的内容，请参考[Flux: Actions and the Dispatcher](http://facebook.github.io/react/blog/2014/07/30/flux-actions-and-the-dispatcher.html)。
     `,
   }
 ]
