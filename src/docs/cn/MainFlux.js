@@ -2,7 +2,7 @@ export default [
   {
     type: 'section',
     content: `
-# Flux 深度解读
+# Flux 深度解读(译文[原址](http://facebook.github.io/flux/docs/in-depth-overview.html#content))
 
 FLux 是 facebook 用于构建 Web 客户端的一种应用架构。它利用单向数据流，来帮助复杂的 React 组合组件的状态管理。它是一种模式，而不仅仅是一个框架，你可以不需要写任何新代码来将 Flux 直接应用到你的应用当中。
 
