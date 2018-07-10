@@ -35,6 +35,12 @@ export default class Container extends React.Component {
                 </Bundle>
               } 
             }/>
+          <Route path={ getPublicUrl('/about') } component={ (props) => {
+                return <Bundle load={ () => import('./About') }>
+                  { Articles => <Articles {...props} /> }
+                </Bundle>
+              } 
+            }/>
         </Switch>
       </Layout.Col>
       <Layout.Col flex="fixed">
