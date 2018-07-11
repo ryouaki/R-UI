@@ -8,6 +8,7 @@ import Containers from './containers';
 import storeCreate from './store';
 
 import 'github-markdown-css/github-markdown.css';
+import 'highlight.js/styles/codepen-embed.css';
 
 let opts = storeCreate();
 
