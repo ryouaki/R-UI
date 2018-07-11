@@ -36,12 +36,12 @@ export default class Sample extends React.PureComponent {
 
   createSample() {
     let {
-      src = [],
-      demo = () => {}
+      src,
+      demo
     } = this.props;
 
     return {
-      code: <CodePanel 
+      code: src&&<CodePanel 
         codes={src} 
         currentTab={this.state.currentTab}
         clickTabHandler={ (index) => {
@@ -55,7 +55,7 @@ export default class Sample extends React.PureComponent {
           })
         }
       </CodePanel>,
-      demo: <div className="sample-demo"> 
+      demo: demo&&<div className="sample-demo"> 
         <p>结果</p>
         { demo() }
       </div>

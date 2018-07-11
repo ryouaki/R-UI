@@ -57,7 +57,7 @@ Flux 避开了 MVC，采取了单向数据流，当用户与 React 视图进行�
 
 让我们自己看看 Flux 的各个组成部分。
 
-### 一个单一的 Dispatcher
+## 一个单一的 Dispatcher
 
 dispatcher 作为数据流管理程序中的派发器。它其实是一个被注册到 store 中的一个回调函数。并没有自己的职能 -- 它将 action 传入到 store 中。每一个 store 都需要注册并提供一个回调函数。每一个 action 都是通过 dispatcher 被传入到 store 中的。
 
@@ -65,7 +65,7 @@ dispatcher 作为数据流管理程序中的派发器。它其实是一个被注
 
 Facebook 用于生产的 dispatcher 可以在[npm](https://www.npmjs.com/package/flux), [Bower](http://bower.io/), 和 [GitHub](https://github.com/facebook/flux)中找到。
 
-### Stores
+## Stores
 
 store 中包含应用的状态和逻辑。它的角色有点类似 MVC 中的 M，但是它们管理一些对象状态 -- 他们不像 ORM 那样表示单个数据记录。这和 Backbone 的集合不同。和管理单一的 ORM 风格的数据对象集合不同。store 管理特定域内的数据状态。
 
@@ -73,7 +73,7 @@ store 中包含应用的状态和逻辑。它的角色有点类似 MVC 中的 M�
 
 就像上面提到的，一个 store 会注册一个 dispatcher 并且提供一个回调函数。这个回调函数接收 action 对象作为参数。对于 store 中注册的回调函数中，根据操作的类型提供一个 switch 操作来对 action 的 type 有针对性的进行处理。这允许操作通过 dispatcher 更新 store 中的数据状态。之后，store 就进行了更新，他们通过广播事件来通知它们的状态发生了改变，因此视图会查询最新的状态，然后更新自己。
 
-### Views and Controller-Views
+## Views and Controller-Views
 
 React 提供了视图层所需要的各种组合方式以及自由的视图层渲染方式。在视图层的最顶层，一种特殊的视图用于监听它所依赖的 store 中的广播事件(注册的回调)。我们称之为 controller-view(react-redux的connectWrapper)，因为它们提供了从 store 中获取数据的方式，并将这些数据传递给它的后代。我们也许需要一个 controller-view 来管理页面的各个部分。
 
@@ -83,13 +83,13 @@ React 提供了视图层所需要的各种组合方式以及自由的视图层�
 
 有时候我们需要在视图结构中添加更多的 controller-view，以保持组件的单一性。这有助于我们更好的封装与特定数据相关联的视图的一部分。但是，请注意，在层次结构中更深的 controller-view 可能会为数据流引入新的，可能冲突的数据。在决定是否需要添加深度 controller-view 时，要平衡简单组件和不同位置流引入更多数据更新的复杂度。这些多个数据更新可能会导致奇怪的效果，通过来自不同的 controller-view 更新反复调用 React 的 render 方法，这可能会增加调试难度。
 
-### Actions
+## Actions
 
 dispatcher 提供一个对外的方法，我们通过这个方法向 store 派发 action 对象。我们会将生成 action 对象的逻辑封装成一个方法，该方法触发 dispatcher 并将 action 传入 dispatcher。例如：我们需要将代办事项列表中的待办事项内容。我们需要在 TodoActions 中创建一个函数 updateText(todoId, newText)，在这个函数中生成我们需要的 action 对象，并将之绑定到 view 的一个交互事件上。当用户触发这个交互事件的时候，这个方法就被执行了，创建了 action 对象，并将其传递给 dispatcher，dispatcher 将 action 传递给 store，store 根据 action 中的 type 属性进行数据处理。这个 type 属性可以像这个样子 TODO_UPDATE_TEXT。
 
 Action 也可以从其它地方获取，比如服务器。例如在初始化阶段，当服务器返回错误代码，或者服务器有数据更新的时候，就会发生这种情况。
 
-### 关于Dispatcher?
+## 关于Dispatcher?
 
 像之前提到的那样，dispatcher 也可以在相关的 store 之间进行分发。这个功能可以通过 Dispatcher 类中的 waitFor 来完成，我们不需要在一些简单应用中这么做。比如[TodoMVC application](https://github.com/facebook/flux/tree/master/examples/flux-todomvc/)，但是我们在更大更复杂的应用中，这么做是非常有必要的。
 

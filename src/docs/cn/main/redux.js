@@ -13,7 +13,7 @@ Redux 是一个面向 JavaScript 应用的状态管理工具。它可以帮助�
 
 Redux 包含 reducers，middleware，store enhancers，但是却非常简单。如果你之前构建过 Flux 应用，那么对于你来说就更简单了。即使你没有使用过 Flux，依然也是很简单的。
 
-### Actions
+## Actions
 
 Actions 是应用程序将数据发送到 store 的载体。可以通过 store.dispatch 来将 action 发送到 store 中。
 
@@ -34,7 +34,7 @@ Actions 是一个原生 JavaScript 对象，并且必须带有一个 type 属性
   import { ADD_TODO, REMOVE_TODO } from '../actionTypes'
 \`\`\`
 
-### Action Creators
+## Action Creators
 
 Action Creators 是用于创建 action 对象的函数:
 
@@ -66,7 +66,7 @@ Action Creators 是用于创建 action 对象的函数:
   dispatch(completeTodo(index))
 \`\`\`
 
-### Reducers
+## Reducers
 
 Reducers 用于根据接受的 action 对象，对 store 内的数据进行相应的处理，action 只描述发生了什么，并不描述应用程序的状态改变，改变发生在 reducer 中。
 
@@ -204,7 +204,7 @@ reducer 在默认情况下或者遇到未知 action 的时候，需要返回传�
   export default todoApp
 \`\`\`
 
-### Store
+## Store
 
 Store 就是一堆对象的集合。Store 包含以下功能：
 
@@ -258,7 +258,7 @@ createStore 具有一个可选参数，可以初始化 store 中的状态。这�
 \`\`\`
 
 
-### Redux 数据流
+## Redux 数据流
 
 Redux 遵循严格的单向数据流。意味着所有的应用都要遵循相同逻辑来管理状态，也正因如此，代码变得更加清晰，易于维护。并且由于采用单一数据源。避免了 Flux 复杂而难以管理状态的问题。但是，会让开发人员觉得繁琐。需要定义非常多的 action 和 reducer。
 
@@ -269,7 +269,7 @@ Redux 遵循严格的单向数据流。意味着所有的应用都要遵循相�
 3. 通过 combineReducers 组合的 reducers 将所有 reducer 返回的状态集中到一个状态树中
 4. store 将返回的新状态树保存起来
 
-### 异步 action
+## 异步 action
 
 当我们使用一个异步 api 的时候，一般会有两个阶段：发起请求，收到回应。
 
@@ -289,7 +289,7 @@ Redux 遵循严格的单向数据流。意味着所有的应用都要遵循相�
 
 > _**Note**: 这里要注意 action 派发的顺序。因为异步的返回时间是无法确定的。所以我们需要借助 Promise 或者 async/await Generator 来控制异步流，保证 dispatch 的 action 有一个合理的顺序。_
 
-### 同步 action
+## 同步 action
 
 对于同步 action，我们只需要在 action creator 中返回一个 action 纯对象即可。
 
@@ -304,7 +304,7 @@ Redux 遵循严格的单向数据流。意味着所有的应用都要遵循相�
   }
 \`\`\`
 
-### Async Flow
+## Async Flow
 
 Redux 仅支持同步的数据流，只能在中间件中处理异步。因此我们需要在 中间件中才能处理异步的数据流。
 
@@ -401,7 +401,7 @@ Redux 仅支持同步的数据流，只能在中间件中处理异步。因此�
   }
 \`\`\`
 
-### 中间件
+## 中间件
 
 在前面，我们看到，我们可以通过中间件来完成异步 action 处理。如果你使用过 express 或者 koa，那么就更容易理解中间件。中间件就是一些代码，会在接收到请求的时候作出回应。
 

@@ -29,7 +29,7 @@ export default [
 {
   type: 'section',
   content: `
-### 为什么是 JSX
+## 为什么是 JSX
 
 React 包括渲染逻辑和其它一些 UI 交互逻辑：事件如何处理，如何响应状态变化，以及数据是否已经可以显示？
 
@@ -39,7 +39,7 @@ React 包括渲染逻辑和其它一些 UI 交互逻辑：事件如何处理，�
 {
   type: 'section',
   content: `
-### 在 JSX 中嵌入表达式
+## 在 JSX 中嵌入表达式
 
 你可以通过大括号，在 JSX 中嵌入一些 JS 表达式。比如 \`2 + 2\`，\`user.firstName\`，\`formatName(user)\` 都是合法的表达式。
 
@@ -72,7 +72,7 @@ React 包括渲染逻辑和其它一些 UI 交互逻辑：事件如何处理，�
   {
     type: 'section',
     content: `
-### JSX 也是一个表达式
+## JSX 也是一个表达式
 
 在编译后，JSX 表达式会变成标准的 JavaScript 函数调用和 JavaScript 对象。
 
@@ -93,7 +93,7 @@ React 包括渲染逻辑和其它一些 UI 交互逻辑：事件如何处理，�
   {
     type: 'section',
     content: `
-### JSX 的属性
+## JSX 的属性
 
 你可以像下面这样将一个字面量作为属性：
 
@@ -114,7 +114,7 @@ React 包括渲染逻辑和其它一些 UI 交互逻辑：事件如何处理，�
   {
     type: 'section',
     content: `
-### JSX 的子节点
+## JSX 的子节点
 
 如果标签内没有其他元素，那么你可以直接使用 \`/>\` 来结束标签，就像 XML 那样：
 
@@ -137,7 +137,7 @@ React 包括渲染逻辑和其它一些 UI 交互逻辑：事件如何处理，�
   {
     type: 'section',
     content: `
-### JSX 可以防止注入攻击
+## JSX 可以防止注入攻击
 
 当我们使用 JSX 的时候，他可以避免 XSS 攻击：
 
@@ -154,7 +154,7 @@ React 包括渲染逻辑和其它一些 UI 交互逻辑：事件如何处理，�
   {
     type: 'section',
     content: `
-### JSX 相当于对象
+## JSX 相当于对象
 
 Babel 编译后的 JSX 元素其实是 \`React.createElement()\` 的调用，这里有两段代码会产生一样的结果：
 

@@ -10,7 +10,7 @@ export default [
     content: `
 # React Router (React 的声明式动态路由)
 
-### 简要
+## 简要
 
 V4 版本的 React Router 是一个基于组件式的动态路由方案。看下面的例子：
 
@@ -51,7 +51,7 @@ react-router-dom 封装了5个路由组件用来应对不同的场景 BrowserRou
 
 > _**Note**: 这是一个让人又爱又恨的路由包。很多人不习惯这种路由 API 设计，但是这种设计确实解决了项目中很多问题。所有的所有，都是组件。_
 
-### 开始
+## 开始
 
 我们可以通过下面命令进行安装：
 
@@ -218,7 +218,7 @@ react-router-dom 封装了5个路由组件用来应对不同的场景 BrowserRou
     content: `
 当 Route 的 path 属性与 URL 匹配上以后，对应的组件就会被显示出来。
 
-### 代码分割
+## 代码分割
 
 代码分割是现代 SPA 常见的一个减少资源加载的技术，它可以实现客户端仅加载需要的资源来减少下载的资源体积的目的。
 
@@ -246,7 +246,7 @@ react-router-dom 封装了5个路由组件用来应对不同的场景 BrowserRou
   {
     type: 'section',
     content: `
-### Redux with React Router
+## Redux with React Router
 
 Redux 是 React 生态系统中是非常重要的一部分。我们希望将 Redux，React Router无缝整合到一起。
 
@@ -280,9 +280,9 @@ Redux 是 React 生态系统中是非常重要的一部分。我们希望将 Red
   {
     type: 'section',
     content: `
-### React Router API
+## React Router API
 
-#### BrowserRouter
+### BrowserRouter
 
 基于 History API 实现的路由方式，该方式由于使用了 H5 的 API，因此只兼容 IE10 及以上版本。并且需要我们在服务端进行配置，因为在 History 模式下，路由的每一次变化都会发生重定向请求，因此需要服务端每次都要返回一次 html 页面，里面包含最初浏览器加载的 html内容。
 
@@ -294,7 +294,7 @@ History 模式避免了 Hash 模式重定向引起的 # 后面的参数服务器
 
 > _**Note**: 其它参数请参考[BrowserRouter](https://reacttraining.com/react-router/web/api/BrowserRouter)_
 
-#### HashRouter
+### HashRouter
 
 Hash 模式其实就是基于 HTML 锚点的一种实现。通过 URL hash的变化触发 hashchange 事件来完成 UI 的切换，该 API 被 IE8 所支持，所以当需要兼容 IE8 的适合需要考虑使用 Hash 模式的路由机制，但是 React 仅支持到 IE9，所以考虑 IE9 以下场景的话就需要考虑其它技术了。
 
@@ -306,7 +306,7 @@ Hash 模式路由的好处是只请求一次服务器，之后每次 URL 变化�
 
 > _**Note**: 其它参数请参考[HashRouter](https://reacttraining.com/react-router/web/api/HashRouter)_
 
-#### Link
+### Link
 
 Link 提供一个导航连接组件。可以把它认为就是组件化的 a 标签。
 
@@ -315,19 +315,19 @@ Link 提供一个导航连接组件。可以把它认为就是组件化的 a 标
 
 > _**Note**: 其它参数请参考[Link](https://reacttraining.com/react-router/web/api/Link)_
 
-#### NavLink
+### NavLink
 
 NavLink 一个特殊版本的导航组件，提供了导航的各种状态。比如当前激活的导航。并且可以为它设置激活后的样式。
 
 > _**Note**: 其它参数请参考[NavLink](https://reacttraining.com/react-router/web/api/NavLink)_
 
-#### Redirect
+### Redirect
 
 Redirect 是一个重定向组件。并且可以特定条件发起重定向。
 
 > _**Note**: 其它参数请参考[Redirect](https://reacttraining.com/react-router/web/api/Redirect)_
 
-#### Route
+### Route
 
 Route 是用于设定路由的匹配规则，当当前路径与 Route 的 path 属性匹配后，其 component，render，children 对应的组件就会被渲染。
 
@@ -340,7 +340,7 @@ Route 是用于设定路由的匹配规则，当当前路径与 Route 的 path �
 
 > _**Note**: 其它参数请参考[Route](https://reacttraining.com/react-router/web/api/Route)_
 
-#### Switch
+### Switch
 
 Switch 内部可以包含一系列 Route 对象，默认显示第一个 Route 组件设定的组件，或者显示匹配的 Route 对应的组件。
 
@@ -357,7 +357,7 @@ Switch 内部可以包含一系列 Route 对象，默认显示第一个 Route �
 
 > _**Note**: 其它参数请参考[Switch](https://reacttraining.com/react-router/web/api/Switch)_
 
-#### withRouter
+### withRouter
 
 该 API 用于为组件注入路由信息，有一些场景下，一些组件并不是通过路由组件 Route 来控制是否显示的，因此可以通过该 API 将路由信息注入到该组件的 props 中。
 
