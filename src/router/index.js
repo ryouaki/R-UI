@@ -79,7 +79,11 @@ export default [
     children: [
       {
         path: '/main/base/layout',
-        component: null,
+        component: (props) => {
+          return <Bundle load={ () => import('./../containers/Main/fragments/ArticleTmpl') }>
+            { Component => <Component {...props} docs={ require('./../docs/cn/base/layout').default }/> }
+          </Bundle>
+        },
       },
       {
         path: '/main/base/button',
