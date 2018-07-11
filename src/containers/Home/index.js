@@ -3,7 +3,7 @@ import React from 'react';
 import Slot from './../Slot';
 
 import './../../styles/home/index.css';
-import docs from './../../docs/cn/Home';
+import docs from './../../docs/cn/home';
 
 export default class Home extends React.PureComponent {
   render() {

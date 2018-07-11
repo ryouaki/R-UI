@@ -11,7 +11,7 @@ export default [
         path: '/main/start/react',
         component: (props) => {
               return <Bundle load={ () => import('./../containers/Main/fragments/ArticleTmpl') }>
-                { Component => <Component {...props} docs={ require('./../docs/cn/MainReact').default }/> }
+                { Component => <Component {...props} docs={ require('./../docs/cn/main/react').default }/> }
               </Bundle>
             },
       },
@@ -19,7 +19,7 @@ export default [
         path: '/main/start/create',
         component: (props) => {
           return <Bundle load={ () => import('./../containers/Main/fragments/ArticleTmpl') }>
-            { Component => <Component {...props} docs={ require('./../docs/cn/MainCreate').default }/> }
+            { Component => <Component {...props} docs={ require('./../docs/cn/main/create').default }/> }
           </Bundle>
         },
       },
@@ -27,7 +27,7 @@ export default [
         path: '/main/start/jsx',
         component: (props) => {
           return <Bundle load={ () => import('./../containers/Main/fragments/ArticleTmpl') }>
-            { Component => <Component {...props} docs={ require('./../docs/cn/MainJSX').default }/> }
+            { Component => <Component {...props} docs={ require('./../docs/cn/main/jsx').default }/> }
           </Bundle>
         },
       },
@@ -35,7 +35,7 @@ export default [
         path: '/main/start/lifecycle',
         component: (props) => {
           return <Bundle load={ () => import('./../containers/Main/fragments/ArticleTmpl') }>
-            { Component => <Component {...props} docs={ require('./../docs/cn/MainLifecycle').default }/> }
+            { Component => <Component {...props} docs={ require('./../docs/cn/main/lifecycle').default }/> }
           </Bundle>
         },
       },
@@ -43,7 +43,7 @@ export default [
         path: '/main/start/think',
         component: (props) => {
           return <Bundle load={ () => import('./../containers/Main/fragments/ArticleTmpl') }>
-            { Component => <Component {...props} docs={ require('./../docs/cn/MainThink').default }/> }
+            { Component => <Component {...props} docs={ require('./../docs/cn/main/think').default }/> }
           </Bundle>
         },
       },
@@ -51,7 +51,7 @@ export default [
         path: '/main/start/flux',
         component: (props) => {
           return <Bundle load={ () => import('./../containers/Main/fragments/ArticleTmpl') }>
-            { Component => <Component {...props} docs={ require('./../docs/cn/MainFlux').default }/> }
+            { Component => <Component {...props} docs={ require('./../docs/cn/main/flux').default }/> }
           </Bundle>
         },
       },
@@ -59,7 +59,7 @@ export default [
         path: '/main/start/router',
         component: (props) => {
           return <Bundle load={ () => import('./../containers/Main/fragments/ArticleTmpl') }>
-            { Component => <Component {...props} docs={ require('./../docs/cn/MainRouter').default }/> }
+            { Component => <Component {...props} docs={ require('./../docs/cn/main/router').default }/> }
           </Bundle>
         },
       },
@@ -67,7 +67,7 @@ export default [
         path: '/main/start/redux',
         component: (props) => {
           return <Bundle load={ () => import('./../containers/Main/fragments/ArticleTmpl') }>
-            { Component => <Component {...props} docs={ require('./../docs/cn/MainRedux').default }/> }
+            { Component => <Component {...props} docs={ require('./../docs/cn/main/redux').default }/> }
           </Bundle>
         },
       }

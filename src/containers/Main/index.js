@@ -8,7 +8,7 @@ import Layout from './../../components/Layout';
 import Menu from './fragments/Menu';
 import Article from './fragments/Article';
 import Bundle from './../../components/Bundle';
-import docs from './../../docs/cn/Menu';
+import docs from './../../docs/cn/menu';
 import routes from './../../router';
 
 import './../../styles/main/index.css';
