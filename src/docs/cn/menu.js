@@ -1,0 +1,43 @@
+export default {
+  '/main/start': '开始',
+  '/main/start/react': '认识 React',
+  '/main/start/create': '从 create-react-app 开始',
+  '/main/start/jsx': 'React - JSX',
+  '/main/start/lifecycle': 'React - 生命周期和状态',
+  '/main/start/think': 'Thinking in React',
+  '/main/start/flux': 'Flux',
+  '/main/start/router': 'React Router(V4.0)',
+  '/main/start/redux': 'Redux',
+
+  '/main/base': '基础组件',
+  '/main/base/layout': 'Layout(布局)',
+  '/main/base/button': 'Button(按钮)',
+  '/main/base/icon': 'Icon(图标)',
+
+  '/main/form': '表单组件',
+  '/main/form/form': 'Form(表单)',
+  '/main/form/input': 'Input(文本框)',
+  '/main/form/radio': 'Radio(单选框)',
+  '/main/form/checkbox': 'Checkbox(多选框)',
+  '/main/form/number': 'Number(数字框)',
+  '/main/form/select': 'Select(下拉框)',
+  '/main/form/switch': 'Switch(开关)',
+  '/main/form/datetimepicker': 'DateTimePicker(日期选择)',
+  '/main/form/updater': 'Updater(上传)',
+
+  '/main/data': '数据组件',
+  '/main/data/table': 'Table(表格组件)',
+  '/main/data/pagination': 'Pagination(分页组件)',
+  '/main/data/tree': 'Tree(树状组件)',
+
+  '/main/notice': '通知组件',
+  '/main/notice/alert': 'Alert(提示)',
+  '/main/notice/loading': 'Loading(加载)',
+  '/main/notice/message': 'Message(消息)',
+
+  '/main/others': '其它组件',
+  '/main/others/dialog': 'Dialog(对话框)',
+  '/main/others/tooltip': 'Tooltip(文字提示)',
+  '/main/others/tabs': 'Tabs(标签)',
+  '/main/others/dropdown': 'Dropdown(下拉菜单)',
+}
