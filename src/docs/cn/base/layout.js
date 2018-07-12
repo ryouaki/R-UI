@@ -93,7 +93,7 @@ Layout.Row 是布局的行，Layout.Col 是布局的列。在我的团队当中�
   {
     type: 'section',
     content: `
-从上面我们可以看到，Layout 布局组件并不提供设定宽高的功能因此需要子元素把它撑开。这是因为 Layout 仅仅提供一个横纵布局的功能，以及布局后的排序功能。类似一个 Flex 布局的功能，保证功能的纯粹，职责的单一。
+从上面我们可以看到，Layout 布局组件并不提供设定宽高的功能因此需要子元素把它撑开。这是因为 Layout 仅仅提供一个横纵布局的功能，以及布局后的排列功能。仅实现类似 Flex 布局的功能，保证功能的纯粹，职责的单一。
 
 对于布局组件，我们要提供基本的布局功能，但是同时，我们还要提供足够的扩展性和尽可能适应更多场景的布局功能。
 
@@ -285,7 +285,6 @@ Layout.Row 是布局的行，Layout.Col 是布局的列。在我的团队当中�
       width: 100%;
       display: flex;
       flex-wrap: nowrap;
-
       &.right {
         justify-content: flex-end;
       }
@@ -301,15 +300,12 @@ Layout.Row 是布局的行，Layout.Col 是布局的列。在我的团队当中�
       &.around {
         justify-content: space-around;
       }
-
       &.direction-row {
         flex-direction: row;
       }
-
       &.direction-col {
         flex-direction: column;
       }
-
       .col {
         &.fixed { // 不变大，也不变小
           flex-grow: 0;
@@ -327,25 +323,21 @@ Layout.Row 是布局的行，Layout.Col 是布局的列。在我的团队当中�
           flex-grow: 0;
           flex-shrink: 1;
         }
-      
         &.center-self {
           align-self: center;
         }
-  
         &.start-self {
           align-self: start;
         }
-  
         &.end-self {
           align-self: end;
         }
-  
         &.normal-self {
           align-self: normal;
         }
       }
     }
-  }  
+  }
 \`\`\`
         `
       }
@@ -611,5 +603,13 @@ Layout.Row 提供 direction 接口可以设定子元素的排列方式，默认�
 
       return <Demo />
     }
+  },
+  {
+    type: 'section',
+    content: `  
+## 结尾
+
+是不是 So So So easy？其实使用 React 写组件就是这么简单，当我们选择 Vue，Angular 这种基于模版的框架的适合，往往被模版约束。因此 Vue 也提供了这种对 JSX 的支持。可见在组件开发这块 JSX 才是我们前端最终的归属。
+    `,
   }
 ]

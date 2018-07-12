@@ -3,7 +3,6 @@
     width: 100%;
     display: flex;
     flex-wrap: nowrap;
-
     &.right {
       justify-content: flex-end;
     }
@@ -19,15 +18,12 @@
     &.around {
       justify-content: space-around;
     }
-
     &.direction-row {
       flex-direction: row;
     }
-
     &.direction-col {
       flex-direction: column;
     }
-
     .col {
       &.fixed { // 不变大，也不变小
         flex-grow: 0;
@@ -45,19 +41,15 @@
         flex-grow: 0;
         flex-shrink: 1;
       }
-
       &.center-self {
         align-self: center;
       }
-
       &.start-self {
         align-self: start;
       }
-
       &.end-self {
         align-self: end;
       }
-
       &.normal-self {
         align-self: normal;
       }
