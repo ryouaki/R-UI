@@ -17,22 +17,26 @@ export default class Col extends React.PureComponent {
 
   static propTypes = {
     flex: PropTypes.oneOf(['fixed', 'grow', 'growAndShrink', 'shrink']),
+    alignSelf: PropTypes.oneOf(['center', 'start', 'end', 'normal']),
     className: PropTypes.string
   }
 
   static defaultProps = {
     flex: 'shrink',
-    className: ''
+    className: '',
+    alignSelf: 'normal'
   }
 
   render() {
     let {
       flex,
       children,
-      className
+      alignSelf,
+      className,
+      ...others
     } = this.props;
     
-    return <div className={classnames('col', this.CONSTANT_FLEX[flex], className)}>
+    return <div {...others} className={classnames('col', alignSelf+'-self', this.CONSTANT_FLEX[flex], className)}>
         { children }
       </div>
   }

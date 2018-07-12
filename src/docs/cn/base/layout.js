@@ -93,12 +93,12 @@ Layout.Row 是布局的行，Layout.Col 是布局的列。在我的团队当中�
   {
     type: 'section',
     content: `
-从上面我们可以看到，Layout 布局组件并不提供设定宽高的功能，因此需要子元素把它撑开。这是因为 Layout 仅仅提供一个横纵布局的功能，以及布局后的排序功能。类似一个 Flex 布局的功能，保证功能的纯粹，职责的单一。
+从上面我们可以看到，Layout 布局组件并不提供设定宽高的功能因此需要子元素把它撑开。这是因为 Layout 仅仅提供一个横纵布局的功能，以及布局后的排序功能。类似一个 Flex 布局的功能，保证功能的纯粹，职责的单一。
 
 对于布局组件，我们要提供基本的布局功能，但是同时，我们还要提供足够的扩展性和尽可能适应更多场景的布局功能。
 
-- 自定义方式
-- 自定义样式
+- 自定义布局方式
+- 自定义外联，内联样式
 
 我们需要提供这些充足的接口才能保证组件能够满足更多的场景，同时也需要提供基本的默认配置满足基本的布局需要。
 
@@ -125,12 +125,35 @@ Layout.Row 是布局的行，Layout.Col 是布局的列。在我的团队当中�
 
 - direction ['row', 'col'] 分别对应是水平布局还是垂直布局
 - align ['left', 'right', 'center', 'between', 'around'] 分别满足左对齐，右对齐，居中对齐，左右分散对齐，左右平均分布
-- className String 自定义样式
 
 在 Col 中提供以下接口来配合 Row 来满足各种布局需要：
 
 - flex ['fixed', 'grow', 'growAndShrink', 'shrink'] 每一个单元格的缩放方式，同 flex
+- alignSelf ['center', 'start', 'end', 'normal'] 提供每一个子元素的对齐方式，同 align-self
+
+当然为了扩展性，又增加了自定义接口，也就是说在 Row 和 Col 中添加的任何 props 属性都会自动附着到组件的外层 Dom 元素上：
 - className String 自定义样式
+- others 任意可扩充属性。但是必须遵守 Html 标签属性规范
+
+出于对于组件稳定性和严谨性的考虑。这里使用了类型验证。用来判断参数是否是合规参数：
+
+\`\`\`js
+  static propTypes = {
+    align: PropTypes.oneOf(['left', 'right', 'center', 'between', 'around']),
+    className: PropTypes.string,
+    direction: PropTypes.oneOf(['row', 'col'])
+  }
+
+  if (React.Children.count(children) <= 0) {
+    throw new Error(\`Layout.Row must work with least one child type of Layout.Col!\`)
+  }
+
+  React.Children.forEach(children, (child) => {
+    if (!React.isValidElement(child) || child.type !== Col) {
+      throw new Error(\`Layout.Row must work with Layout.Col! The type of current child is [ \${child.type} ]\`)
+    }
+  })
+\`\`\`
 
 因此我们最终完成的布局组件代码如下：
     `
@@ -226,22 +249,26 @@ Layout.Row 是布局的行，Layout.Col 是布局的列。在我的团队当中�
 
     static propTypes = {
       flex: PropTypes.oneOf(['fixed', 'grow', 'growAndShrink', 'shrink']),
+      alignSelf: PropTypes.oneOf(['center', 'start', 'end', 'normal']),
       className: PropTypes.string
     }
 
     static defaultProps = {
       flex: 'shrink',
-      className: ''
+      className: '',
+      alignSelf: 'normal'
     }
 
     render() {
       let {
         flex,
         children,
-        className
+        alignSelf,
+        className,
+        ...others
       } = this.props;
       
-      return <div className={classnames('col', this.CONSTANT_FLEX[flex], className)}>
+      return <div {...others} className={classnames('col', alignSelf+'-self', this.CONSTANT_FLEX[flex], className)}>
           { children }
         </div>
     }
@@ -300,9 +327,25 @@ Layout.Row 是布局的行，Layout.Col 是布局的列。在我的团队当中�
           flex-grow: 0;
           flex-shrink: 1;
         }
+      
+        &.center-self {
+          align-self: center;
+        }
+  
+        &.start-self {
+          align-self: start;
+        }
+  
+        &.end-self {
+          align-self: end;
+        }
+  
+        &.normal-self {
+          align-self: normal;
+        }
       }
     }
-  }
+  }  
 \`\`\`
         `
       }
@@ -313,7 +356,260 @@ Layout.Row 是布局的行，Layout.Col 是布局的列。在我的团队当中�
     content: `
 ## 使用    
 
+### 一个典型的使用场景，左右布局，一侧固定，另一侧自适应宽度
 
+Layout.Col 的接口可以帮我们设置当前块的缩放方式 growAndShrink 标示空间不足就缩小，空间足够就放大
     `,
+  },
+  {
+    type: 'sample',
+    src: [
+      {
+        name: '左侧固定右侧自适应布局.jsx',
+        code: `
+\`\`\`js
+  class Demo1 extends React.Component {
+    render() {
+      return <Layout.Row>
+        <Layout.Col>
+          <div style={{width: '200px', height: '50px', background: 'red'}}>
+            固定200px
+          </div>
+        </Layout.Col>
+        <Layout.Col flex='growAndShrink'>
+          <div style={{height: '50px', background: 'green'}}>
+            自己变大缩小
+          </div>
+        </Layout.Col>
+      </Layout.Row>
+    }
+  }
+\`\`\`    
+        `
+      },
+      {
+        name: '右侧侧固定左侧侧自适应布局.jsx',
+        code: `
+\`\`\`js
+  class Demo2 extends React.Component {
+    render() {
+      return <Layout.Row>
+        <Layout.Col flex='growAndShrink'>
+          <div style={{height: '50px', background: 'red'}}>
+            自己变大缩小
+          </div>
+        </Layout.Col>
+        <Layout.Col>
+          <div style={{width: '200px', height: '50px', background: 'green'}}>
+            固定200px
+          </div>
+        </Layout.Col>
+      </Layout.Row>
+    }
+  }
+\`\`\`    
+        `
+      }
+    ],
+    demo: () => {
+      class Demo1 extends React.Component {
+        render() {
+          return <Layout.Row>
+            <Layout.Col>
+              <div style={{width: '200px', height: '50px', background: 'red'}}>
+                固定200px
+              </div>
+            </Layout.Col>
+            <Layout.Col flex='growAndShrink'>
+              <div style={{height: '50px', background: 'green'}}>
+                自己变大缩小
+              </div>
+            </Layout.Col>
+          </Layout.Row>
+        }
+      }
+
+      class Demo2 extends React.Component {
+        render() {
+          return <Layout.Row>
+            <Layout.Col flex='growAndShrink'>
+              <div style={{height: '50px', background: 'red'}}>
+                自己变大缩小
+              </div>
+            </Layout.Col>
+            <Layout.Col>
+              <div style={{width: '200px', height: '50px', background: 'green'}}>
+                固定200px
+              </div>
+            </Layout.Col>
+          </Layout.Row>
+        }
+      }
+
+      return <React.Fragment>
+          <Demo1/>
+          <Demo2/>
+        </React.Fragment>
+    }
+  },
+  {
+    type: 'section',
+    content: `  
+### 如何做一个水平居中布局
+
+Layout.Row 为我们提供了组件内块级元素的排列方式接口 align，其中 center 是让子组件水平居中对齐
+    `,
+  },
+  {
+    type: 'sample',
+    src: [
+      {
+        name: '水平居中布局.jsx',
+        code: `
+\`\`\`js
+  class Demo extends React.Component {
+    render() {
+      return <Layout.Row align="center">
+        <Layout.Col>
+          <div style={{width: '200px', height: '50px', background: 'red'}}>
+            固定200px
+          </div>
+        </Layout.Col>
+      </Layout.Row>
+    }
+  }
+\`\`\`    
+        `
+      }
+    ],
+    demo: () => {
+      class Demo extends React.Component {
+        render() {
+          return <Layout.Row align="center">
+            <Layout.Col>
+              <div style={{width: '200px', height: '50px', background: 'red'}}>
+                固定200px，并且居中对其
+              </div>
+            </Layout.Col>
+          </Layout.Row>
+        }
+      }
+
+      return <Demo />
+    }
+  },
+  {
+    type: 'section',
+    content: `  
+### 垂直布局
+
+Layout.Row 提供 direction 接口可以设定子元素的排列方式，默认是 row - 行布局。
+    `,
+  },
+  {
+    type: 'sample',
+    src: [
+      {
+        name: '垂直布局.jsx',
+        code: `
+\`\`\`js
+  class Demo extends React.Component {
+    render() {
+      return <Layout.Row direction="col">
+        <Layout.Col>
+          <div style={{width: '200px', height: '50px', background: 'red'}}>
+            固定200px
+          </div>
+        </Layout.Col>
+        <Layout.Col>
+          <div style={{width: '200px', height: '50px', background: 'yellow'}}>
+            固定200px
+          </div>
+        </Layout.Col>
+        <Layout.Col>
+          <div style={{width: '200px', height: '50px', background: 'green'}}>
+            固定200px
+          </div>
+        </Layout.Col>
+      </Layout.Row>
+    }
+  }
+\`\`\`    
+        `
+      }
+    ],
+    demo: () => {
+      class Demo extends React.Component {
+        render() {
+          return <Layout.Row direction="col">
+            <Layout.Col>
+              <div style={{width: '200px', height: '50px', background: 'red'}}>
+                固定200px
+              </div>
+            </Layout.Col>
+            <Layout.Col>
+              <div style={{width: '200px', height: '50px', background: 'yellow'}}>
+                固定200px
+              </div>
+            </Layout.Col>
+            <Layout.Col>
+              <div style={{width: '200px', height: '50px', background: 'green'}}>
+                固定200px
+              </div>
+            </Layout.Col>
+          </Layout.Row>
+        }
+      }
+
+      return <Demo />
+    }
+  },
+  {
+    type: 'section',
+    content: `  
+### 做一个垂直居中，水平居中怎么样
+    `,
+  },
+  {
+    type: 'sample',
+    src: [
+      {
+        name: '.jsx',
+        code: `
+\`\`\`js
+  class Demo extends React.Component {
+    render() {
+      return <Layout.Row align='center'>
+        <Layout.Col style={{height: '200px', width: '200px'}}>
+          <Layout.Row style={{height: '100%'}} align="center">
+            <Layout.Col style={{height: '50px', width: '50px', background: 'red'}} alignSelf='center'>
+              我在中间
+            </Layout.Col>
+          </Layout.Row>
+        </Layout.Col>
+      </Layout.Row>
+    }
+  }
+\`\`\`    
+        `
+      }
+    ],
+    demo: () => {
+      class Demo extends React.Component {
+        render() {
+          return <Layout.Row align='center'>
+            <Layout.Col style={{height: '200px', width: '200px'}}>
+              <Layout.Row style={{height: '100%'}} align="center">
+                <Layout.Col style={{height: '100px', width: '100px', background: 'red'}} alignSelf='center'>
+                  我在中间
+                </Layout.Col>
+              </Layout.Row>
+            </Layout.Col>
+          </Layout.Row>
+        }
+      }
+
+      return <Demo />
+    }
   }
 ]

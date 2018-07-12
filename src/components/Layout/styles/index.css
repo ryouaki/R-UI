@@ -40,3 +40,15 @@
   flex-grow: 0;
   flex-shrink: 1;
 }
+.r-ui .row .col.center-self {
+  align-self: center;
+}
+.r-ui .row .col.start-self {
+  align-self: start;
+}
+.r-ui .row .col.end-self {
+  align-self: end;
+}
+.r-ui .row .col.normal-self {
+  align-self: normal;
+}

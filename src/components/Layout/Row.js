@@ -13,7 +13,7 @@ export default class Row extends React.PureComponent {
 
   static defaultProps = {
     align: 'left',
-    chassName: '',
+    className: '',
     direction: 'row'
   }
 
@@ -22,7 +22,8 @@ export default class Row extends React.PureComponent {
       align,
       children,
       className,
-      direction
+      direction,
+      ...others
     } = this.props;
 
     if (React.Children.count(children) <= 0) {
@@ -35,7 +36,7 @@ export default class Row extends React.PureComponent {
       }
     })
 
-    return <div className={ classnames('row', 'direction-' + direction, align, className) }>
+    return <div {...others} className={ classnames('row', 'direction-' + direction, align, className) }>
         { children }
       </div>
   }
