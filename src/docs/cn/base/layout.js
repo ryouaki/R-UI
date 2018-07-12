@@ -566,7 +566,7 @@ Layout.Row 提供 direction 接口可以设定子元素的排列方式，默认�
     type: 'sample',
     src: [
       {
-        name: '.jsx',
+        name: '垂直水平居中.jsx',
         code: `
 \`\`\`js
   class Demo extends React.Component {
