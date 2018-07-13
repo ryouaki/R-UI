@@ -4,7 +4,7 @@ import {
   Route
 } from 'react-router-dom';
 
-import Layout from './../../components/Layout';
+import * as Layout from './../../components/Layout';
 import Menu from './fragments/Menu';
 import Article from './fragments/Article';
 import Bundle from './../../components/Bundle';

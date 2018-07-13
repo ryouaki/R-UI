@@ -3,7 +3,7 @@ import Col from './Col';
 
 import './styles/index.css';
 
-export default {
+export {
   Row,
   Col
 }

@@ -7,7 +7,7 @@ import {
 import Bundle from './../components/Bundle';
 import { getPublicUrl } from './../common';
 
-import Layout from './../components/Layout';
+import * as Layout from './../components/Layout';
 
 import Header from './Header';
 import Footer from './Footer';
